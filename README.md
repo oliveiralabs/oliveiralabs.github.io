@@ -1,123 +1,109 @@
----
-layout: default
----
+# The Cayman theme
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+[![Build Status](https://travis-ci.org/pages-themes/cayman.svg?branch=master)](https://travis-ci.org/pages-themes/cayman) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-cayman.svg)](https://badge.fury.io/rb/jekyll-theme-cayman)
 
-[Link to another page](./another-page.html).
+*Cayman is a Jekyll theme for GitHub Pages. You can [preview the theme to see what it looks like](http://pages-themes.github.io/cayman), or even [use it today](#usage).*
 
-There should be whitespace between paragraphs.
+![Thumbnail of Cayman](thumbnail.png)
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+## Usage
 
-# Header 1
+To use the Cayman theme:
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+1. Add the following to your site's `_config.yml`:
 
-## Header 2
+    ```yml
+    theme: jekyll-theme-cayman
+    ```
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+2. Optionally, if you'd like to preview your site on your computer, add the following to your site's `Gemfile`:
 
-### Header 3
+    ```ruby
+    gem "github-pages", group: :jekyll_plugins
+    ```
 
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
+## Customizing
+
+### Configuration variables
+
+Cayman will respect the following variables, if set in your site's `_config.yml`:
+
+```yml
+title: [The title of your site]
+description: [A short description of your site's purpose]
 ```
 
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
+Additionally, you may choose to set the following optional variables:
+
+```yml
+show_downloads: ["true" or "false" to indicate whether to provide a download URL]
+google_analytics: [Your Google Analytics tracking ID]
 ```
 
-#### Header 4
+### Stylesheet
 
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
+If you'd like to add your own custom styles:
 
-##### Header 5
+1. Create a file called `/assets/css/style.scss` in your site
+2. Add the following content to the top of the file, exactly as shown:
+    ```scss
+    ---
+    ---
 
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
+    @import "{{ site.theme }}";
+    ```
+3. Add any custom CSS (or Sass, including imports) you'd like immediately after the `@import` line
 
-###### Header 6
+*Note: If you'd like to change the theme's Sass variables, you must set new values before the `@import` line in your stylesheet.*
 
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
+### Layouts
 
-### There's a horizontal rule below this.
+If you'd like to change the theme's HTML layout:
 
-* * *
+1. [Copy the original template](https://github.com/pages-themes/cayman/blob/master/_layouts/default.html) from the theme's repository<br />(*Pro-tip: click "raw" to make copying easier*)
+2. Create a file called `/_layouts/default.html` in your site
+3. Paste the default layout content copied in the first step
+4. Customize the layout as you'd like
 
-### Here is an unordered list:
+### Overriding GitHub-generated URLs
 
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
+Templates often rely on URLs supplied by GitHub such as links to your repository or links to download your project. If you'd like to override one or more default URLs:
 
-### And an ordered list:
+1. Look at [the template source](https://github.com/pages-themes/cayman/blob/master/_layouts/default.html) to determine the name of the variable. It will be in the form of `{{ site.github.zip_url }}`.
+2. Specify the URL that you'd like the template to use in your site's `_config.yml`. For example, if the variable was `site.github.url`, you'd add the following:
+    ```yml
+    github:
+      zip_url: http://example.com/download.zip
+      another_url: another value
+    ```
+3. When your site is built, Jekyll will use the URL you specified, rather than the default one provided by GitHub.
 
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
+*Note: You must remove the `site.` prefix, and each variable name (after the `github.`) should be indent with two space below `github:`.*
 
-### And a nested list:
+For more information, see [the Jekyll variables documentation](https://jekyllrb.com/docs/variables/).
 
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
+## Roadmap
 
-### Small image
+See the [open issues](https://github.com/pages-themes/cayman/issues) for a list of proposed features (and known issues).
 
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
+## Project philosophy
 
-### Large image
+The Cayman theme is intended to make it quick and easy for GitHub Pages users to create their first (or 100th) website. The theme should meet the vast majority of users' needs out of the box, erring on the side of simplicity rather than flexibility, and provide users the opportunity to opt-in to additional complexity if they have specific needs or wish to further customize their experience (such as adding custom CSS or modifying the default layout). It should also look great, but that goes without saying.
 
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
+## Contributing
 
+Interested in contributing to Cayman? We'd love your help. Cayman is an open source project, built one contribution at a time by users like you. See [the CONTRIBUTING file](docs/CONTRIBUTING.md) for instructions on how to contribute.
 
-### Definition lists can be used with HTML syntax.
+### Previewing the theme locally
 
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
+If you'd like to preview the theme locally (for example, in the process of proposing a change):
 
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
+1. Clone down the theme's repository (`git clone https://github.com/pages-themes/cayman`)
+2. `cd` into the theme's directory
+3. Run `script/bootstrap` to install the necessary dependencies
+4. Run `bundle exec jekyll serve` to start the preview server
+5. Visit [`localhost:4000`](http://localhost:4000) in your browser to preview the theme
 
-```
-The final element.
-```
+### Running tests
+
+The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run `script/cibuild`. You'll need to run `script/bootstrap` once before the test script will work.
