@@ -2,8 +2,6 @@
 
 Public files for Oliveira Labs's apps
 
-## Android Apps
-
 # Mega Drum
 ![Mega Drum Logo](assets/img/megadrum.png)
 
