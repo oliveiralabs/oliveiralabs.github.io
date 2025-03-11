@@ -1,0 +1,188 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #0073e6;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo img {
+  height: 50px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+  background-color: #005bb5;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+}
+
+.cta-button {
+  background-color: #ffcc00;
+  color: #333;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.about,
+.apps,
+.testimonials,
+.contact {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.about h2,
+.apps h2,
+.testimonials h2,
+.contact h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.app-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.app-card h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.app-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: #0073e6;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.testimonial-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card p {
+  font-style: italic;
+}
+
+.testimonial-card .author {
+  text-align: right;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.contact form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact form input,
+.contact form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact form button {
+  background-color: #0073e6;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+footer .quick-links,
+footer .social-media {
+  margin-bottom: 20px;
+}
+
+footer .quick-links ul,
+footer .social-media ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer .quick-links ul li,
+footer .social-media ul li {
+  margin-bottom: 10px;
+}
+
+footer .quick-links ul li a,
+footer .social-media ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+footer .copyright {
+  margin-top: 20px;
+  font-size: 0.9em;
+}
