@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exclusão de conta e dados — Percussão Virtual</title>
+  <style>
+    :root { color-scheme: light dark; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #f5f5f5;
+    }
+    .container { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
+    header { border-bottom: 2px solid #157878; padding-bottom: 16px; margin-bottom: 24px; }
+    h1 { font-size: 1.6rem; margin: 0 0 4px; color: #157878; }
+    .subtitle { color: #555; font-size: 0.95rem; }
+    h2 { font-size: 1.15rem; margin: 32px 0 8px; }
+    ol, ul { padding-left: 22px; }
+    li { margin: 6px 0; }
+    code, .email {
+      background: #e8f0ef; padding: 2px 6px; border-radius: 4px;
+      font-family: Consolas, Menlo, monospace; font-size: 0.95em;
+    }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.95rem; }
+    th, td { text-align: left; padding: 10px 12px; border: 1px solid #d0d0d0; vertical-align: top; }
+    th { background: #157878; color: #fff; }
+    .path { font-weight: bold; }
+    .note {
+      background: #fff8e1; border-left: 4px solid #f0ad4e;
+      padding: 12px 16px; margin-top: 24px; border-radius: 4px;
+    }
+    footer { margin-top: 40px; font-size: 0.85rem; color: #777; }
+    a { color: #157878; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #121212; color: #e6e6e6; }
+      .subtitle { color: #aaa; }
+      code, .email { background: #1e2b2a; }
+      th, td { border-color: #333; }
+      .note { background: #2a2415; }
+      footer { color: #999; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Exclusão de conta e dados</h1>
+      <div class="subtitle">Aplicativo <strong>Percussão Virtual</strong> &middot; Desenvolvedor <strong>Oliveira Labs (Antônio Oliveira)</strong></div>
+    </header>
+
+    <p>
+      Esta página explica como excluir sua conta e os dados associados no aplicativo
+      <strong>Percussão Virtual</strong> (<code>com.oliveiralabs.percussao</code>),
+      desenvolvido por Oliveira Labs. A conta é criada ao entrar com o Login do Google.
+    </p>
+
+    <h2>Opção 1 — Excluir pelo aplicativo (recomendado)</h2>
+    <ol>
+      <li>Abra o aplicativo <strong>Percussão Virtual</strong> e faça login, se necessário.</li>
+      <li>Toque em <span class="path">Configurações</span>.</li>
+      <li>Role até a seção <span class="path">Conta</span> e toque em <span class="path">Excluir conta</span>.</li>
+      <li>Leia o aviso e toque em <span class="path">Excluir conta</span> para confirmar.</li>
+      <li>Sua conta e seus dados são removidos imediatamente e você é desconectado.</li>
+    </ol>
+
+    <h2>Opção 2 — Solicitar por e-mail</h2>
+    <p>Caso já tenha desinstalado o app ou não consiga acessá-lo:</p>
+    <ol>
+      <li>Envie um e-mail para <span class="email">antonio.filho128@gmail.com</span>.</li>
+      <li>Assunto: <strong>"Solicitação de exclusão de conta — Percussão Virtual"</strong>.</li>
+      <li>Envie a partir do mesmo e-mail Google usado para entrar no app, ou informe esse e-mail no corpo da mensagem.</li>
+      <li>A exclusão é concluída em até <strong>30 dias</strong> após a confirmação.</li>
+    </ol>
+
+    <h2>Dados excluídos e mantidos</h2>
+    <table>
+      <thead>
+        <tr><th>Tipo de dado</th><th>Ação</th><th>Prazo</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Conta e identidade (e-mail e ID do Login do Google)</td>
+          <td>Excluídos permanentemente</td>
+          <td>Imediato</td>
+        </tr>
+        <tr>
+          <td>Perfil (nome de exibição, avatar, bio, links de redes sociais)</td>
+          <td>Excluídos permanentemente</td>
+          <td>Imediato</td>
+        </tr>
+        <tr>
+          <td>Conteúdo criado (kits, gravações, posts, pads e comentários)</td>
+          <td>Excluídos permanentemente</td>
+          <td>Imediato</td>
+        </tr>
+        <tr>
+          <td>Interações (curtidas, seguidores/seguindo, conquistas, notificações)</td>
+          <td>Excluídas permanentemente</td>
+          <td>Imediato</td>
+        </tr>
+        <tr>
+          <td>Arquivos de mídia enviados (áudios de gravações e imagens de capa)</td>
+          <td>Excluídos do armazenamento</td>
+          <td>Em até 30 dias</td>
+        </tr>
+        <tr>
+          <td>Registros de uso/analytics vinculados à sua conta</td>
+          <td>Excluídos ou desvinculados da sua identidade</td>
+          <td>Em até 30 dias</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top:16px;">
+      <strong>Dados mantidos:</strong> após a exclusão, não mantemos dados pessoais associados à
+      sua conta. Registros mínimos podem ser retidos temporariamente apenas quando exigidos por lei
+      ou para prevenção de fraude/abuso, sendo eliminados ao fim desse período. A exclusão é
+      permanente e não pode ser desfeita.
+    </p>
+
+    <div class="note">
+      O aplicativo também usa serviços do Google (Firebase e AdMob) para funcionamento e anúncios.
+      Você pode limitar dados de publicidade em <em>Configurações do Android &rarr; Google &rarr; Anúncios</em>.
+      Detalhes em nossa
+      <a href="https://oliveiralabs.github.io/privacy-policy-percussion.html">Política de Privacidade</a>.
+    </div>
+
+    <footer>
+      Oliveira Labs &middot; Contato: <a href="mailto:antonio.filho128@gmail.com">antonio.filho128@gmail.com</a>
+    </footer>
+  </div>
+</body>
+</html>
