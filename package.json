@@ -5,6 +5,7 @@
   "scripts": {
     "predev": "npm run catalog:sync",
     "dev": "next dev",
+    "catalog:refresh": "node scripts/fetch-supabase-catalog.mjs",
     "catalog:sync": "node scripts/sync-catalog.mjs",
     "catalog:validate": "node scripts/validate-catalog.mjs",
     "legacy:verify": "node scripts/verify-legacy.mjs",

@@ -52,7 +52,9 @@ for (const file of htmlFiles) {
   }
 }
 
-const kitPages = htmlFiles.filter((file) => /\/kit\/\d+\/[^/]+\/index\.html$/.test(file));
+const kitPages = htmlFiles.filter((file) =>
+  /\/kit\/[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\/[^/]+\/index\.html$/i.test(file),
+);
 if (kitPages.length !== 294) errors.push(`Expected 294 localized kit pages, found ${kitPages.length}`);
 
 for (const file of kitPages) {

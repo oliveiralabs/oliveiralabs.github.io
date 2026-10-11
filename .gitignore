@@ -8,6 +8,11 @@ node_modules/
 out/
 *.tsbuildinfo
 
+# Local public-service configuration (never commit local env files).
+.env
+.env.local
+.env.*.local
+
 # Generated catalog assets are reproducible from the catalog repositories.
 public/catalog/
 public/brand/

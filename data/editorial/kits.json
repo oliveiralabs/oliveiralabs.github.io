@@ -1,5 +1,12 @@
 {
   "approvedForIndexing": [],
-  "featured": ["128", "127", "126", "124", "122", "1000"],
+  "featured": [
+    "b16e8d73-d413-4eba-9209-e167e515e9a5",
+    "fd372e75-3b48-4f6f-bbfc-e6724d5b47c4",
+    "ca21e399-2f5f-455a-bcf9-e6332c16ce96",
+    "7a760c88-2251-41a5-a3c9-42f45f3f14f3",
+    "33e964c8-f670-4c83-b7f6-5a9fe094bc27",
+    "5a5cf9bb-2e61-41ec-b3d1-133d439835d5"
+  ],
   "metadata": {}
 }

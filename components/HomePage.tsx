@@ -13,8 +13,8 @@ export function HomePage({ locale }: { locale: Locale }) {
   const text = getCopy(locale);
   const kits = getAllKits();
   const featured = getFeaturedKits();
-  const freeCount = kits.filter((kit) => kit.tier === "free").length;
-  const premiumCount = kits.length - freeCount;
+  const unlockableCount = kits.filter((kit) => !kit.isPremium).length;
+  const premiumCount = kits.length - unlockableCount;
 
   return (
     <>
@@ -34,7 +34,7 @@ export function HomePage({ locale }: { locale: Locale }) {
               </form>
               <dl className="catalog-stats" aria-label="Catalog summary">
                 <div><dt>{kits.length}</dt><dd>{text.stats.kits}</dd></div>
-                <div><dt>{freeCount}</dt><dd>{text.stats.free}</dd></div>
+                <div><dt>{unlockableCount}</dt><dd>{text.stats.unlockable}</dd></div>
                 <div><dt>{premiumCount}</dt><dd>{text.stats.premium}</dd></div>
               </dl>
             </div>

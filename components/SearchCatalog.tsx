@@ -3,15 +3,15 @@
 import { useEffect, useMemo, useState } from "react";
 import { KitCard } from "./KitCard";
 import { getCopy } from "@/lib/copy";
-import type { Kit, KitTier, Locale } from "@/lib/types";
+import type { Kit, Locale } from "@/lib/types";
 
 export function SearchCatalog({ kits, locale }: { kits: Kit[]; locale: Locale }) {
   const text = getCopy(locale).catalog;
   const [query, setQuery] = useState("");
-  const [tier, setTier] = useState<KitTier | "all">("all");
+  const [tier, setTier] = useState<"standard" | "premium" | "all">("all");
   const normalized = query.trim().toLocaleLowerCase(locale === "pt" ? "pt-BR" : "en-US");
   const results = useMemo(
-    () => kits.filter((kit) => (tier === "all" || kit.tier === tier) && (!normalized || `${kit.name} ${kit.id}`.toLocaleLowerCase().includes(normalized))),
+    () => kits.filter((kit) => (tier === "all" || (tier === "premium" ? kit.isPremium : !kit.isPremium)) && (!normalized || kit.name.toLocaleLowerCase().includes(normalized))),
     [kits, normalized, tier],
   );
 
@@ -28,7 +28,7 @@ export function SearchCatalog({ kits, locale }: { kits: Kit[]; locale: Locale })
           <input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder={text.filter} autoComplete="off" />
         </label>
         <div className="filter-tabs" role="group" aria-label="Kit type">
-          {(["all", "free", "premium"] as const).map((value) => (
+          {(["all", "standard", "premium"] as const).map((value) => (
             <button key={value} type="button" className={tier === value ? "active" : ""} onClick={() => setTier(value)} aria-pressed={tier === value}>
               {text[value]}
             </button>

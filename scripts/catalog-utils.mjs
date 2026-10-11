@@ -8,12 +8,10 @@ export function slugify(value) {
     .replace(/^-+|-+$/g, "");
 }
 
-export function extractKitId(path) {
-  const match = /^online_kit_(\d+)$/.exec(path);
-  if (!match) {
-    throw new Error(`Invalid kit path: ${path}`);
-  }
-  return match[1];
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+export function isUuid(value) {
+  return UUID_PATTERN.test(value);
 }
 
 export function publicKitRoute(kit, locale = "en") {
@@ -21,20 +19,31 @@ export function publicKitRoute(kit, locale = "en") {
   return `${prefix}/kit/${kit.id}/${kit.slug}/`;
 }
 
-export function normalizeKit(entry, tier, editorial) {
-  const id = extractKitId(entry.path);
+export function kitAccess(entry) {
+  if (entry.is_premium) return "premium";
+  if (entry.need_user_task) return "task";
+  if (entry.unlock_lesson_id) return "lesson";
+  return "app_unlock";
+}
+
+export function normalizeKit(entry, editorial) {
+  const id = entry.id;
+  if (!isUuid(id)) throw new Error(`Invalid Supabase kit id: ${id}`);
   const overrides = editorial.metadata[id] ?? {};
   const name = overrides.name ?? entry.name;
 
   return {
     id,
-    sourceKey: entry.path,
     name,
     slug: slugify(name),
-    tier,
-    version: entry.version == null ? null : String(entry.version),
+    access: kitAccess(entry),
+    isPremium: Boolean(entry.is_premium),
+    isDefault: Boolean(entry.is_default),
+    needUserTask: Boolean(entry.need_user_task),
+    unlockLessonId: entry.unlock_lesson_id ?? null,
+    sortOrder: Number(entry.sort_order),
     cover: `/catalog/kits/${id}/cover.png`,
-    sourceCoverUrl: entry.coverUrl,
+    sourceCoverUrl: entry.cover_url,
     approvedForIndexing: editorial.approvedForIndexing.includes(id),
     featured: editorial.featured.includes(id),
     description: overrides.description ?? null,

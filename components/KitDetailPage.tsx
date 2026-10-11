@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getCopy } from "@/lib/copy";
-import { kitDescription, kitRoute, relatedKits } from "@/lib/catalog";
+import { kitAccessLabel, kitDescription, kitRoute, relatedKits } from "@/lib/catalog";
 import { absoluteUrl, localizedPath } from "@/lib/site";
 import type { Kit, Locale } from "@/lib/types";
 import { KitGrid } from "./KitGrid";
@@ -41,8 +41,8 @@ export function KitDetailPage({ kit, locale }: { kit: Kit; locale: Locale }) {
             <h1>{kit.name}</h1>
             <p className="lead compact">{description}</p>
             <dl className="kit-facts">
-              <div><dt>{text.id}</dt><dd>{kit.sourceKey}</dd></div>
-              <div><dt>{text.access}</dt><dd>{kit.tier === "premium" ? text.premium : text.free}</dd></div>
+              <div><dt>{text.catalog}</dt><dd>{text.official}</dd></div>
+              <div><dt>{text.access}</dt><dd>{kitAccessLabel(kit, locale)}</dd></div>
             </dl>
             <h2 className="cta-heading">{text.use}</h2>
             <StoreButtons locale={locale} kitId={kit.id} />

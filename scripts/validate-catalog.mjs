@@ -6,19 +6,22 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const kits = JSON.parse(
   await readFile(path.join(root, "data", "generated", "catalog.json"), "utf8"),
 );
+const source = JSON.parse(
+  await readFile(path.join(root, "data", "source", "supabase-kits.json"), "utf8"),
+);
 
 const errors = [];
 const ids = new Set();
-const sourceKeys = new Set();
+const sortOrders = new Set();
 
 for (const kit of kits) {
-  if (!kit.id || !kit.name || !kit.slug || !kit.sourceKey) {
+  if (!kit.id || !kit.name || !kit.slug || !kit.sourceCoverUrl) {
     errors.push(`Kit has missing required data: ${JSON.stringify(kit)}`);
   }
   if (ids.has(kit.id)) errors.push(`Duplicate kit id: ${kit.id}`);
-  if (sourceKeys.has(kit.sourceKey)) errors.push(`Duplicate source key: ${kit.sourceKey}`);
+  if (sortOrders.has(kit.sortOrder)) errors.push(`Duplicate sort order: ${kit.sortOrder}`);
   ids.add(kit.id);
-  sourceKeys.add(kit.sourceKey);
+  sortOrders.add(kit.sortOrder);
 
   const coverPath = path.join(root, "public", kit.cover.replace(/^\//, ""));
   try {
@@ -29,8 +32,8 @@ for (const kit of kits) {
   }
 }
 
-if (kits.length !== 147) {
-  errors.push(`Expected 147 catalog entries, found ${kits.length}`);
+if (kits.length !== source.length || kits.length === 0) {
+  errors.push(`Catalog/source count mismatch: ${kits.length}/${source.length}`);
 }
 
 if (errors.length) {
@@ -43,5 +46,5 @@ const duplicateSlugs = Object.entries(
 ).filter(([, group]) => group.length > 1);
 
 console.log(
-  `Catalog valid: ${kits.length} kits, ${duplicateSlugs.length} expected slug collisions resolved by stable ids.`,
+  `Catalog valid: ${kits.length} Supabase kits, ${duplicateSlugs.length} slug collisions resolved by UUIDs.`,
 );
