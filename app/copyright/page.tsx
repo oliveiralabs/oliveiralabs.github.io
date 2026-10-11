@@ -1,0 +1,6 @@
+import { ContentPage } from "@/components/ContentPage";
+import { pageMetadata } from "@/lib/metadata";
+
+export const metadata = pageMetadata({ title: "Copyright", description: "Copyright information and contact for the Mega Drum public catalog.", path: "/copyright/", locale: "en", index: false });
+
+export default function Page() { return <ContentPage locale="en" eyebrow="Rights and attribution" title="Copyright" lead="Mega Drum and the public catalog are maintained by Oliveira Labs."><h2>Report a concern</h2><p>If you own rights to a name, image, sound, or other material shown in connection with a kit and want it reviewed, email <a href="mailto:antonio.filho128@gmail.com?subject=Mega%20Drum%20copyright%20review">antonio.filho128@gmail.com</a>. Include the kit URL, the material at issue, and a way to verify the request.</p><h2>No implied endorsement</h2><p>A kit name or visual reference does not by itself state sponsorship, endorsement, or affiliation with a third party.</p></ContentPage>; }

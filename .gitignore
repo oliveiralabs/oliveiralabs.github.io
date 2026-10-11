@@ -2,3 +2,13 @@ _site
 .sass-cache
 Gemfile.lock
 *.gem
+# Next.js / local build output
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# Generated catalog assets are reproducible from the catalog repositories.
+public/catalog/
+public/brand/
+data/generated/

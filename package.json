@@ -1,0 +1,31 @@
+{
+  "name": "megadrum-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "predev": "npm run catalog:sync",
+    "dev": "next dev",
+    "catalog:sync": "node scripts/sync-catalog.mjs",
+    "catalog:validate": "node scripts/validate-catalog.mjs",
+    "legacy:verify": "node scripts/verify-legacy.mjs",
+    "prebuild": "npm run catalog:sync && npm run catalog:validate",
+    "build": "next build && node scripts/copy-legacy.mjs && npm run legacy:verify && node scripts/verify-export.mjs",
+    "start": "npx serve out",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint app components lib scripts tests",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run catalog:sync && npm run catalog:validate && npm run lint && npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "oxlint": "1.87.0",
+    "typescript": "6.0.3"
+  }
+}
