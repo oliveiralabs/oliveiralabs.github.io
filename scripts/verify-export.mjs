@@ -5,6 +5,13 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const out = path.join(root, "out");
 const errors = [];
+const isProduction = process.env.NEXT_PUBLIC_SITE_ENV === "production";
+const catalog = JSON.parse(
+  await readFile(path.join(root, "data", "generated", "catalog.json"), "utf8"),
+);
+const approvedIds = new Set(
+  catalog.filter((kit) => kit.approvedForIndexing).map((kit) => kit.id),
+);
 
 async function walk(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -59,16 +66,26 @@ if (kitPages.length !== 294) errors.push(`Expected 294 localized kit pages, foun
 
 for (const file of kitPages) {
   const html = await readFile(file, "utf8");
-  if (!html.includes('name="robots" content="noindex, nofollow"')) errors.push(`Preview page is indexable: ${path.relative(out, file)}`);
+  const match = file.match(/\/kit\/([0-9a-f-]{36})\//i);
+  const shouldIndex = isProduction && match && approvedIds.has(match[1]);
+  const isNoIndex = html.includes('name="robots" content="noindex, nofollow"');
+  if (shouldIndex && isNoIndex) errors.push(`Approved production page is not indexable: ${path.relative(out, file)}`);
+  if (!shouldIndex && !isNoIndex) errors.push(`Unapproved page is indexable: ${path.relative(out, file)}`);
   if (!html.includes('rel="canonical"')) errors.push(`Missing canonical: ${path.relative(out, file)}`);
 }
 
 const robots = await readFile(path.join(out, "robots.txt"), "utf8");
-if (!robots.includes("Disallow: /")) errors.push("Preview robots.txt does not block crawling");
+if (isProduction) {
+  if (!robots.includes("Allow: /")) errors.push("Production robots.txt does not allow crawling");
+  if (!robots.includes("Disallow: /search/")) errors.push("Production robots.txt does not exclude search pages");
+} else if (!robots.includes("Disallow: /")) {
+  errors.push("Preview robots.txt does not block crawling");
+}
 
 const sitemap = await readFile(path.join(out, "sitemap.xml"), "utf8");
 const sitemapUrls = [...sitemap.matchAll(/<loc>/g)].length;
-if (sitemapUrls !== 310) errors.push(`Expected 310 preview sitemap URLs, found ${sitemapUrls}`);
+const expectedSitemapUrls = isProduction ? 16 + approvedIds.size * 2 : 310;
+if (sitemapUrls !== expectedSitemapUrls) errors.push(`Expected ${expectedSitemapUrls} sitemap URLs, found ${sitemapUrls}`);
 
 if (errors.length) {
   console.error(errors.slice(0, 100).join("\n"));
@@ -76,4 +93,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Static export verified: ${htmlFiles.length} HTML files, 294 kit pages, ${sitemapUrls} sitemap URLs, no broken internal references.`);
+console.log(`Static ${isProduction ? "production" : "preview"} export verified: ${htmlFiles.length} HTML files, 294 kit pages, ${sitemapUrls} sitemap URLs, no broken internal references.`);

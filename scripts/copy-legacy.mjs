@@ -8,7 +8,7 @@ const out = path.join(root, "out");
 const rootFiles = (await readdir(root)).filter(
   (name) =>
     (name.endsWith(".html") && name !== "index.html") ||
-    ["ads.txt", "app-ads.txt", "CNAME", "readme.md"].includes(name),
+    [".nojekyll", "ads.txt", "app-ads.txt", "CNAME", "readme.md"].includes(name),
 );
 
 await mkdir(out, { recursive: true });
