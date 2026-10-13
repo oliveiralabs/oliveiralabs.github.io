@@ -19,24 +19,16 @@ const labels = {
   en: {
     gallery: "Real drum kits available in Mega Drum",
     downloads: "downloads",
-    previous: "Previous kit",
-    next: "Next kit",
     pause: "Pause carousel",
     play: "Play carousel",
-    playing: "Auto-playing",
-    paused: "Paused",
     reduced: "Autoplay disabled by motion preference",
     slide: "Kit {current} of {total}",
   },
   pt: {
     gallery: "Kits de bateria reais disponíveis no Mega Drum",
     downloads: "downloads",
-    previous: "Kit anterior",
-    next: "Próximo kit",
     pause: "Pausar carrossel",
     play: "Reproduzir carrossel",
-    playing: "Reprodução automática",
-    paused: "Pausado",
     reduced: "Reprodução automática desativada pela preferência de movimento",
     slide: "Kit {current} de {total}",
   },
@@ -88,9 +80,6 @@ export function HeroKitCarousel({ locale }: { locale: Locale }) {
   const [pausedByUser, setPausedByUser] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  const previous = useCallback(() => {
-    setActiveIndex((index) => (index - 1 + gallery.length) % gallery.length);
-  }, []);
   const next = useCallback(() => {
     setActiveIndex((index) => (index + 1) % gallery.length);
   }, []);
@@ -153,16 +142,9 @@ export function HeroKitCarousel({ locale }: { locale: Locale }) {
           })}
         </div>
 
-        <button className="ring-navigation ring-navigation-previous" type="button" onClick={previous} aria-label={text.previous}>
-          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></svg>
-        </button>
-        <button className="ring-navigation ring-navigation-next" type="button" onClick={next} aria-label={text.next}>
-          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></svg>
-        </button>
       </div>
 
       <div className="ring-status">
-        <span className="ring-status-label">{isPaused ? text.paused : text.playing}</span>
         <span aria-hidden="true">{String(activeIndex + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}</span>
         <button
           type="button"

@@ -1,6 +1,6 @@
-:HL["/_next/static/chunks/345pp2njcy903.css","style"]
+:HL["/_next/static/chunks/40sbumcb8n1jp.css","style"]
 4:[["children",{"s":"__PAGE__","h":160}]]
 3:[["children",{"s":{"n":"slug","t":"d","k":"kendang-koplo","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":{"n":"id","t":"d","k":"fad70f80-1e25-493c-885d-196d80e77479","s":[]},"h":96,"c":"$Q3"}]]
 1:[["children",{"s":"kit","h":96,"c":"$Q2"}]]
-0:{"b":"u3ZBQjzIWgssRqyykSkEc","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"-G2xo5vn9NNkgbVlK8PzS","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
