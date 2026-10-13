@@ -32,28 +32,12 @@ export function HomePage({ locale }: { locale: Locale }) {
             </div>
             <div className="hero-proof" aria-label={text.proof.label}>
               <div className="proof-orbit" aria-hidden="true" />
-              <div className="proof-topline">
-                <Image src="/brand/megadrum-production.png" alt="" width={76} height={76} priority />
-                <div>
-                  <p className="eyebrow">{text.proof.eyebrow}</p>
-                  <strong>{text.proof.title}</strong>
-                </div>
-              </div>
+              <Image className="proof-logo" src="/brand/megadrum-production.png" alt="Mega Drum" width={96} height={96} priority />
               <div className="proof-milestone">
                 <strong>1M+</strong>
                 <span>{text.proof.downloads}</span>
               </div>
-              <div className="proof-platforms">
-                <div className="proof-platform proof-platform-google">
-                  <small>Google Play</small>
-                  <strong>{text.proof.google}</strong>
-                </div>
-                <div className="proof-platform proof-platform-apple">
-                  <small>App Store</small>
-                  <strong>{text.proof.apple}</strong>
-                </div>
-              </div>
-              <p className="proof-note">{text.proof.note}</p>
+              <StoreButtons locale={locale} />
             </div>
           </div>
         </section>

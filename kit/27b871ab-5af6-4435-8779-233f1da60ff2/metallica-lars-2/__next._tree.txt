@@ -1,6 +1,6 @@
-:HL["/_next/static/chunks/3ll9z86w6gl2h.css","style"]
+:HL["/_next/static/chunks/0hmdl33aq2qnt.css","style"]
 4:[["children",{"s":"__PAGE__","h":160}]]
 3:[["children",{"s":{"n":"slug","t":"d","k":"metallica-lars-2","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":{"n":"id","t":"d","k":"27b871ab-5af6-4435-8779-233f1da60ff2","s":[]},"h":96,"c":"$Q3"}]]
 1:[["children",{"s":"kit","h":96,"c":"$Q2"}]]
-0:{"b":"QtkSq7Z2nSD_LBGWe3NaY","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"dzXUo9A99yh0AQWZuePcs","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
