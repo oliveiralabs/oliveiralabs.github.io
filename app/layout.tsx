@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: { default: "Mega Drum — Find your next drum kit", template: "%s — Mega Drum" },
   description: "Explore the public Mega Drum kit catalog and take your next drum setup to the mobile app.",
   applicationName: "Mega Drum",
-  icons: { icon: "/brand/new-mega-drum.png", apple: "/brand/megadrum-ios.png" },
+  icons: { icon: "/brand/megadrum-production.png", apple: "/brand/megadrum-ios.png" },
   robots: isProductionIndexing ? { index: true, follow: true } : { index: false, follow: false },
   openGraph: {
     type: "website",

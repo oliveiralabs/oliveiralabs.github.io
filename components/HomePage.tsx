@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getAllKits, getFeaturedKits } from "@/lib/catalog";
+import { getFeaturedKits } from "@/lib/catalog";
 import { getCopy } from "@/lib/copy";
 import { localizedPath } from "@/lib/site";
 import type { Locale } from "@/lib/types";
@@ -11,10 +11,7 @@ import { StoreButtons } from "./StoreButtons";
 
 export function HomePage({ locale }: { locale: Locale }) {
   const text = getCopy(locale);
-  const kits = getAllKits();
   const featured = getFeaturedKits();
-  const unlockableCount = kits.filter((kit) => !kit.isPremium).length;
-  const premiumCount = kits.length - unlockableCount;
 
   return (
     <>
@@ -32,11 +29,6 @@ export function HomePage({ locale }: { locale: Locale }) {
                 <input id={`home-search-${locale}`} type="search" name="q" placeholder={text.hero.search} />
                 <button type="submit">{text.hero.submit} <span aria-hidden="true">→</span></button>
               </form>
-              <dl className="catalog-stats" aria-label="Catalog summary">
-                <div><dt>{kits.length}</dt><dd>{text.stats.kits}</dd></div>
-                <div><dt>{unlockableCount}</dt><dd>{text.stats.unlockable}</dd></div>
-                <div><dt>{premiumCount}</dt><dd>{text.stats.premium}</dd></div>
-              </dl>
             </div>
             <div className="hero-visual" aria-hidden="true">
               <Image src="/brand/megadrum-kit-center.webp" alt="" fill sizes="(max-width: 900px) 100vw, 50vw" priority />

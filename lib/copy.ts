@@ -6,13 +6,13 @@ const copy = {
     language: "Português",
     languageCode: "PT",
     hero: {
-      eyebrow: "147 kits. One app. Your next beat.",
+      eyebrow: "One app. Your next beat.",
       title: "Find your next drum kit.",
       body: "Explore every kit available in Mega Drum, discover a new setup, and take it straight to the app.",
       search: "Search kits by name",
       submit: "Search",
     },
-    stats: { kits: "kits", unlockable: "unlockable in app", premium: "premium kits" },
+    stats: { kits: "kits" },
     featured: { eyebrow: "Start here", title: "Selected kits", all: "Browse all kits" },
     browse: {
       eyebrow: "The public catalog",
@@ -34,13 +34,13 @@ const copy = {
     language: "English",
     languageCode: "EN",
     hero: {
-      eyebrow: "147 kits. Um app. Sua próxima batida.",
+      eyebrow: "Um app. Sua próxima batida.",
       title: "Encontre seu próximo kit de bateria.",
       body: "Explore todos os kits disponíveis no Mega Drum, descubra uma nova configuração e leve-a direto para o app.",
       search: "Buscar kits por nome",
       submit: "Buscar",
     },
-    stats: { kits: "kits", unlockable: "desbloqueáveis no app", premium: "kits premium" },
+    stats: { kits: "kits" },
     featured: { eyebrow: "Comece por aqui", title: "Kits selecionados", all: "Ver todos os kits" },
     browse: {
       eyebrow: "O catálogo público",

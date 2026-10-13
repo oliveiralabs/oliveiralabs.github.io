@@ -11,6 +11,6 @@ export default function manifest(): MetadataRoute.Manifest {
     display: "standalone",
     background_color: "#fbfaf7",
     theme_color: "#f8f6f1",
-    icons: [{ src: "/brand/new-mega-drum.png", sizes: "512x512", type: "image/png" }],
+    icons: [{ src: "/brand/megadrum-production.png", sizes: "512x512", type: "image/png" }],
   };
 }

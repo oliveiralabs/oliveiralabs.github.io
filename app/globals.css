@@ -55,10 +55,6 @@ h2 { margin-bottom: 18px; font-size: clamp(2.25rem, 4.5vw, 4.2rem); }
 .hero-search { display: flex; gap: 8px; padding: 7px; background: white; border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); }
 .hero-search input { min-width: 0; flex: 1; border: 0; outline: 0; background: transparent; padding: 12px 14px; color: var(--ink); }
 .hero-search button { border: 0; border-radius: 13px; padding: 12px 18px; background: var(--red); color: white; font-weight: 780; cursor: pointer; }
-.catalog-stats { display: flex; gap: 34px; margin: 24px 0 0; }
-.catalog-stats div { display: flex; gap: 6px; align-items: baseline; }
-.catalog-stats dt { font-weight: 900; font-size: 1.15rem; }
-.catalog-stats dd { margin: 0; color: var(--muted); font-size: .87rem; }
 .hero-visual { position: relative; overflow: hidden; aspect-ratio: 1848 / 819; border-radius: 36px; box-shadow: 0 35px 90px rgba(1, 53, 51, .18); transform: rotate(1.2deg); background: #f4f2eb; }
 .hero-visual::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(255,255,255,.7); border-radius: inherit; pointer-events: none; }
 .hero-visual img, .app-visual img { object-fit: cover; }
@@ -91,14 +87,12 @@ h2 { margin-bottom: 18px; font-size: clamp(2.25rem, 4.5vw, 4.2rem); }
 .app-visual { position: relative; min-height: 420px; }
 .app-visual img { object-position: 82% center; }
 .app-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #062d2b, transparent 27%); }
-.store-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-.store-button { display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 9px 16px; border: 1px solid rgba(255,255,255,.24); border-radius: 14px; background: rgba(255,255,255,.1); color: white; transition: background .2s ease, transform .2s ease; }
-.store-button:hover { transform: translateY(-2px); background: rgba(255,255,255,.17); }
-.store-button small, .store-button strong { display: block; }
-.store-button small { opacity: .72; font-size: .68rem; }
-.store-button strong { font-size: .88rem; }
-.store-mark { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 10px; background: white; color: var(--teal); }
-.store-mark.apple { color: var(--ink); }
+.store-buttons { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 28px; }
+.store-button { display: flex; align-items: center; min-height: 60px; line-height: 0; transition: transform .2s ease; }
+.store-button:hover { transform: translateY(-2px); }
+.store-button img { display: block; width: auto; }
+.store-button-apple img { height: 40px; }
+.store-button-google img { height: 60px; }
 
 .page-hero { padding-block: 100px 80px; border-bottom: 1px solid var(--line); background: linear-gradient(145deg, #fffdfa, #f2eee7); }
 .compact-hero h1 { max-width: 920px; font-size: clamp(3rem, 6vw, 5.4rem); }
@@ -123,7 +117,6 @@ h2 { margin-bottom: 18px; font-size: clamp(2.25rem, 4.5vw, 4.2rem); }
 .kit-facts div { padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: white; }
 .kit-facts dt { color: var(--muted); font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; }
 .kit-facts dd { margin: 3px 0 0; font-weight: 760; }
-.kit-detail .store-button { background: var(--ink); border-color: var(--ink); }
 .cta-heading { margin: 0; font-size: 1.28rem; letter-spacing: -.02em; line-height: 1.25; }
 .microcopy { margin-top: 14px; color: var(--muted); font-size: .78rem; }
 .related-section { background: var(--paper-warm); border-top: 1px solid var(--line); }
@@ -167,9 +160,6 @@ h2 { margin-bottom: 18px; font-size: clamp(2.25rem, 4.5vw, 4.2rem); }
   .hero-grid { min-height: auto; padding-block: 52px; }
   h1 { font-size: clamp(3rem, 15vw, 4.7rem); }
   .hero-search { display: grid; }
-  .catalog-stats { gap: 14px; justify-content: space-between; }
-  .catalog-stats div { display: block; }
-  .catalog-stats dd { font-size: .72rem; }
   .hero-visual { min-height: 0; border-radius: 24px; }
   .section { padding-block: 72px; }
   .section-heading { display: block; }
@@ -178,8 +168,6 @@ h2 { margin-bottom: 18px; font-size: clamp(2.25rem, 4.5vw, 4.2rem); }
   .kit-cover { aspect-ratio: 2.15 / 1; }
   .app-copy { padding: 34px 24px 42px; }
   .app-visual { min-height: 260px; }
-  .store-buttons { display: grid; }
-  .store-button { width: 100%; }
   .page-hero { padding-block: 70px 55px; }
   .catalog-controls { display: grid; }
   .filter-tabs { min-height: 50px; }

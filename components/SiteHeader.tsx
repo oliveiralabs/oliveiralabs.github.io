@@ -12,7 +12,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
     <header className="site-header">
       <div className="shell nav-shell">
         <Link className="brand" href={localizedPath("/", locale)} aria-label="Mega Drum">
-          <Image src="/brand/new-mega-drum.png" alt="" width={44} height={44} priority />
+          <Image src="/brand/megadrum-production.png" alt="" width={44} height={44} priority />
           <span>Mega Drum</span>
         </Link>
         <nav aria-label="Primary navigation">

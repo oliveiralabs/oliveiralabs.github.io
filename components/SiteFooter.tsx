@@ -11,7 +11,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
       <div className="shell footer-grid">
         <div>
           <Link className="brand" href={localizedPath("/", locale)}>
-            <Image src="/brand/new-mega-drum.png" alt="" width={44} height={44} />
+            <Image src="/brand/megadrum-production.png" alt="" width={44} height={44} />
             <span>Mega Drum</span>
           </Link>
           <p>{text.footer.line}</p>

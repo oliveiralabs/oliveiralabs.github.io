@@ -43,6 +43,7 @@ for (const kit of kits) {
 await mkdir(publicBrandDir, { recursive: true });
 for (const file of [
   "new-mega-drum.png",
+  "megadrum-production.png",
   "megadrum-ios.png",
   "megadrum-kit-center.webp",
   "megadrum-showcase.webp",
@@ -50,6 +51,15 @@ for (const file of [
   await copyFile(
     path.join(root, "assets", "img", file),
     path.join(publicBrandDir, file),
+  );
+}
+
+const publicStoreDir = path.join(publicBrandDir, "store");
+await mkdir(publicStoreDir, { recursive: true });
+for (const file of ["app-store-en.svg", "google-play-en.png", "google-play-pt-br.png"]) {
+  await copyFile(
+    path.join(root, "assets", "img", "store", file),
+    path.join(publicStoreDir, file),
   );
 }
 
