@@ -1,7 +1,7 @@
-:HL["/_next/static/chunks/40sbumcb8n1jp.css","style"]
+:HL["/_next/static/chunks/3x536s4da8yj8.css","style"]
 5:[["children",{"s":"__PAGE__","h":160}]]
 4:[["children",{"s":{"n":"slug","t":"d","k":"black-cymbal","s":[]},"h":96,"c":"$Q5"}]]
 3:[["children",{"s":{"n":"id","t":"d","k":"b60da1b3-90fd-4fee-98ce-2453718c4c42","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":"kit","h":96,"c":"$Q3"}]]
 1:[["children",{"s":"pt","h":96,"c":"$Q2"}]]
-0:{"b":"-G2xo5vn9NNkgbVlK8PzS","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"2QP3NxgCgRyBSkFxYqkPV","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

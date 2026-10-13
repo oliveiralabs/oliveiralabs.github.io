@@ -145,7 +145,6 @@ export function HeroKitCarousel({ locale }: { locale: Locale }) {
       </div>
 
       <div className="ring-status">
-        <span aria-hidden="true">{String(activeIndex + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}</span>
         <button
           type="button"
           className="ring-playback"
