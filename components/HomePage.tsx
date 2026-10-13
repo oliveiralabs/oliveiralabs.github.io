@@ -30,8 +30,30 @@ export function HomePage({ locale }: { locale: Locale }) {
                 <button type="submit">{text.hero.submit} <span aria-hidden="true">→</span></button>
               </form>
             </div>
-            <div className="hero-visual" aria-hidden="true">
-              <Image src="/brand/megadrum-kit-center.webp" alt="" fill sizes="(max-width: 900px) 100vw, 50vw" priority />
+            <div className="hero-proof" aria-label={text.proof.label}>
+              <div className="proof-orbit" aria-hidden="true" />
+              <div className="proof-topline">
+                <Image src="/brand/megadrum-production.png" alt="" width={76} height={76} priority />
+                <div>
+                  <p className="eyebrow">{text.proof.eyebrow}</p>
+                  <strong>{text.proof.title}</strong>
+                </div>
+              </div>
+              <div className="proof-milestone">
+                <strong>1M+</strong>
+                <span>{text.proof.downloads}</span>
+              </div>
+              <div className="proof-platforms">
+                <div className="proof-platform proof-platform-google">
+                  <small>Google Play</small>
+                  <strong>{text.proof.google}</strong>
+                </div>
+                <div className="proof-platform proof-platform-apple">
+                  <small>App Store</small>
+                  <strong>{text.proof.apple}</strong>
+                </div>
+              </div>
+              <p className="proof-note">{text.proof.note}</p>
             </div>
           </div>
         </section>

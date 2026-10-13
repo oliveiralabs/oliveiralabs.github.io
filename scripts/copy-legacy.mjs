@@ -7,7 +7,7 @@ const out = path.join(root, "out");
 
 const rootFiles = (await readdir(root)).filter(
   (name) =>
-    (name.endsWith(".html") && name !== "index.html") ||
+    (name.endsWith(".html") && !["404.html", "index.html"].includes(name)) ||
     [".nojekyll", "ads.txt", "app-ads.txt", "CNAME", "readme.md"].includes(name),
 );
 
