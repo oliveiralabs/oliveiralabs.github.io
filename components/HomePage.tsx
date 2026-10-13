@@ -4,6 +4,7 @@ import { getFeaturedKits } from "@/lib/catalog";
 import { getCopy } from "@/lib/copy";
 import { localizedPath } from "@/lib/site";
 import type { Locale } from "@/lib/types";
+import { HeroKitCarousel } from "./HeroKitCarousel";
 import { KitGrid } from "./KitGrid";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
@@ -24,21 +25,10 @@ export function HomePage({ locale }: { locale: Locale }) {
               <p className="eyebrow">{text.hero.eyebrow}</p>
               <h1>{text.hero.title}</h1>
               <p className="lead">{text.hero.body}</p>
-              <form className="hero-search" action={localizedPath("/search/", locale)}>
-                <label className="sr-only" htmlFor={`home-search-${locale}`}>{text.hero.search}</label>
-                <input id={`home-search-${locale}`} type="search" name="q" placeholder={text.hero.search} />
-                <button type="submit">{text.hero.submit} <span aria-hidden="true">→</span></button>
-              </form>
-            </div>
-            <div className="hero-proof" aria-label={text.proof.label}>
-              <div className="proof-orbit" aria-hidden="true" />
-              <Image className="proof-logo" src="/brand/megadrum-production.png" alt="Mega Drum" width={96} height={96} priority />
-              <div className="proof-milestone">
-                <strong>1M+</strong>
-                <span>{text.proof.downloads}</span>
-              </div>
+              <Link className="button hero-explore" href={localizedPath("/kits/", locale)}>{text.hero.explore} <span aria-hidden="true">→</span></Link>
               <StoreButtons locale={locale} />
             </div>
+            <HeroKitCarousel locale={locale} />
           </div>
         </section>
 

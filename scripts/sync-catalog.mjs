@@ -1,4 +1,4 @@
-import { copyFile, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { copyFile, cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -62,6 +62,14 @@ for (const file of ["app-store-en.svg", "google-play-en.png", "google-play-pt-br
     path.join(publicStoreDir, file),
   );
 }
+
+const publicPlayGalleryDir = path.join(publicBrandDir, "play-gallery");
+await rm(publicPlayGalleryDir, { recursive: true, force: true });
+await cp(
+  path.join(root, "assets", "img", "play-gallery"),
+  publicPlayGalleryDir,
+  { recursive: true },
+);
 
 await mkdir(generatedDir, { recursive: true });
 await writeFile(

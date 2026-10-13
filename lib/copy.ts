@@ -11,6 +11,7 @@ const copy = {
       body: "Explore every kit available in Mega Drum, discover a new setup, and take it straight to the app.",
       search: "Search kits by name",
       submit: "Search",
+      explore: "Explore kits",
     },
     proof: {
       label: "Mega Drum has more than one million downloads",
@@ -43,6 +44,7 @@ const copy = {
       body: "Explore todos os kits disponíveis no Mega Drum, descubra uma nova configuração e leve-a direto para o app.",
       search: "Buscar kits por nome",
       submit: "Buscar",
+      explore: "Explorar kits",
     },
     proof: {
       label: "O Mega Drum tem mais de um milhão de downloads",

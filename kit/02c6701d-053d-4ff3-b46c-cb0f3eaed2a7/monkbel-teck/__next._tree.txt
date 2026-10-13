@@ -1,6 +1,6 @@
-:HL["/_next/static/chunks/0hmdl33aq2qnt.css","style"]
+:HL["/_next/static/chunks/0glprzup2vt8q.css","style"]
 4:[["children",{"s":"__PAGE__","h":160}]]
 3:[["children",{"s":{"n":"slug","t":"d","k":"monkbel-teck","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":{"n":"id","t":"d","k":"02c6701d-053d-4ff3-b46c-cb0f3eaed2a7","s":[]},"h":96,"c":"$Q3"}]]
 1:[["children",{"s":"kit","h":96,"c":"$Q2"}]]
-0:{"b":"dzXUo9A99yh0AQWZuePcs","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"aEPsP_DXfK2ju4jCoM6_c","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
