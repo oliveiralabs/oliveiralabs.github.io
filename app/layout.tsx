@@ -1,7 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/navigation";
 import "./globals.css";
 import { isProductionIndexing, siteUrl } from "@/lib/site";
 
