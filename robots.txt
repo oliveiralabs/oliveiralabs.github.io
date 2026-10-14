@@ -1,7 +1,5 @@
 User-Agent: *
-Allow: /
-Disallow: /search/
-Disallow: /pt/search/
+Disallow: /
 
 Host: https://megadrum.app
 Sitemap: https://megadrum.app/sitemap.xml
