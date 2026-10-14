@@ -10,6 +10,7 @@
     "catalog:validate": "node scripts/validate-catalog.mjs",
     "covers:audit": "python3 scripts/kit-cover-pipeline.py audit",
     "covers:generate": "python3 scripts/kit-cover-pipeline.py generate",
+    "covers:publish": "python3 scripts/publish-kit-covers.py",
     "legacy:verify": "node scripts/verify-legacy.mjs",
     "prebuild": "npm run catalog:sync && npm run catalog:validate",
     "build": "next build && node scripts/copy-legacy.mjs && npm run legacy:verify && node scripts/verify-export.mjs",

@@ -136,5 +136,19 @@ migration. Legacy `anon` keys remain supported for catalog refreshes.
 5. Run `MEGADRUM_REFRESH_ASSETS=1 npm run check` and deploy the static export.
 6. Keep the previous URL for rollback until all three clients are verified.
 
+For a reviewed batch, run a dry-run first. The publisher refuses to overwrite
+a different versioned object and writes the current catalog values to a
+rollback file before any mutation:
+
+```bash
+npm run covers:publish -- \
+  --generated /absolute/path/to/generated-covers \
+  --rollback-dir /absolute/path/to/publication-record
+```
+
+After reviewing the summary, repeat the same command with `--apply`. Covers are
+published for every manifest; `background-v2.png` is published only when the
+manifest points to a reviewed background override.
+
 The web catalog uses the same 2:1 ratio as the native generator, so no client
 needs to crop or reinterpret the composition.
