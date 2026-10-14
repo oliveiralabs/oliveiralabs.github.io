@@ -4,11 +4,12 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const supabaseUrl = process.env.MEGADRUM_SUPABASE_URL?.replace(/\/$/, "");
-const anonKey = process.env.MEGADRUM_SUPABASE_ANON_KEY;
+const publishableKey =
+  process.env.MEGADRUM_SUPABASE_PUBLISHABLE_KEY ?? process.env.MEGADRUM_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !anonKey) {
+if (!supabaseUrl || !publishableKey) {
   throw new Error(
-    "Set MEGADRUM_SUPABASE_URL and MEGADRUM_SUPABASE_ANON_KEY to refresh the public catalog snapshot.",
+    "Set MEGADRUM_SUPABASE_URL and MEGADRUM_SUPABASE_PUBLISHABLE_KEY to refresh the public catalog snapshot.",
   );
 }
 
@@ -24,8 +25,12 @@ const columns = [
   "unlock_lesson_id",
 ].join(",");
 const endpoint = `${supabaseUrl}/rest/v1/kits?select=${columns}&order=sort_order.asc`;
+const headers = { apikey: publishableKey };
+if (!publishableKey.startsWith("sb_publishable_")) {
+  headers.Authorization = `Bearer ${publishableKey}`;
+}
 const response = await fetch(endpoint, {
-  headers: { apikey: anonKey, Authorization: `Bearer ${anonKey}` },
+  headers,
 });
 
 if (!response.ok) {
