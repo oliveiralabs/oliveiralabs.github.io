@@ -27,7 +27,7 @@ img { max-width: 100%; }
 .skip-link:focus { top: 12px; }
 
 .site-header { position: sticky; z-index: 20; top: 0; background: color-mix(in srgb, var(--paper) 90%, transparent); border-bottom: 1px solid rgba(21, 24, 23, .08); backdrop-filter: blur(18px); }
-.nav-shell { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+.nav-shell { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
 .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 1.08rem; font-weight: 850; letter-spacing: -.03em; }
 .brand img { border-radius: 12px; }
 .site-header a:hover { color: var(--red); }
@@ -69,10 +69,10 @@ h2 { margin-bottom: 18px; font-size: clamp(2.25rem, 4.5vw, 4.2rem); }
 .store-button img { display: block; width: auto; }
 .store-button-apple img { height: 40px; }
 .store-button-google img { height: 60px; }
-.store-buttons-compact { flex-wrap: nowrap; gap: 9px; margin-top: 0; }
-.store-buttons-compact .store-button { min-height: 44px; }
-.store-buttons-compact .store-button-apple img { height: 32px; }
-.store-buttons-compact .store-button-google img { height: 48px; }
+.store-buttons-compact { flex-wrap: nowrap; gap: 12px; margin-top: 0; }
+.store-buttons-compact .store-button { min-height: 60px; }
+.store-buttons-compact .store-button-apple img { height: 40px; }
+.store-buttons-compact .store-button-google img { height: 60px; }
 
 .page-hero { padding-block: 100px 80px; border-bottom: 1px solid var(--line); background: linear-gradient(145deg, #fffdfa, #f2eee7); }
 .compact-hero h1 { max-width: 920px; font-size: clamp(3rem, 6vw, 5.4rem); }
@@ -128,14 +128,14 @@ h2 { margin-bottom: 18px; font-size: clamp(2.25rem, 4.5vw, 4.2rem); }
 
 @media (max-width: 680px) {
   .shell { width: min(calc(100% - 28px), var(--shell)); }
-  .nav-shell { min-height: 82px; gap: 10px; }
+  .nav-shell { min-height: 86px; gap: 10px; }
   .brand span { display: none; }
   .header-download { display: grid; justify-items: end; gap: 1px; }
   .header-download > span { font-size: .62rem; letter-spacing: .06em; }
   .store-buttons-compact { gap: 6px; }
-  .store-buttons-compact .store-button { min-height: 34px; }
-  .store-buttons-compact .store-button-apple img { height: 27px; }
-  .store-buttons-compact .store-button-google img { height: 40px; }
+  .store-buttons-compact .store-button { min-height: 46px; }
+  .store-buttons-compact .store-button-apple img { height: 31px; }
+  .store-buttons-compact .store-button-google img { height: 46px; }
   h1 { font-size: clamp(3rem, 15vw, 4.7rem); }
   .section { padding-block: 72px; }
   .section-heading { display: block; }
