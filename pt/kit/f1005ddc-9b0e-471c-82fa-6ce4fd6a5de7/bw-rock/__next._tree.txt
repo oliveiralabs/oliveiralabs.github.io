@@ -1,7 +1,7 @@
-:HL["/_next/static/chunks/1julxrusdpyk9.css","style"]
+:HL["/_next/static/chunks/2cmrgcb62agiv.css","style"]
 5:[["children",{"s":"__PAGE__","h":160}]]
 4:[["children",{"s":{"n":"slug","t":"d","k":"bw-rock","s":[]},"h":96,"c":"$Q5"}]]
 3:[["children",{"s":{"n":"id","t":"d","k":"f1005ddc-9b0e-471c-82fa-6ce4fd6a5de7","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":"kit","h":96,"c":"$Q3"}]]
 1:[["children",{"s":"pt","h":96,"c":"$Q2"}]]
-0:{"b":"QwwjimQ2bXsclJRg_R07E","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"1isOVISxVeDAWgsDoC0mZ","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

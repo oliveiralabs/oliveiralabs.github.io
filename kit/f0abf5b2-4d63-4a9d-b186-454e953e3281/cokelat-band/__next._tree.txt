@@ -1,6 +1,6 @@
-:HL["/_next/static/chunks/1julxrusdpyk9.css","style"]
+:HL["/_next/static/chunks/2cmrgcb62agiv.css","style"]
 4:[["children",{"s":"__PAGE__","h":160}]]
 3:[["children",{"s":{"n":"slug","t":"d","k":"cokelat-band","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":{"n":"id","t":"d","k":"f0abf5b2-4d63-4a9d-b186-454e953e3281","s":[]},"h":96,"c":"$Q3"}]]
 1:[["children",{"s":"kit","h":96,"c":"$Q2"}]]
-0:{"b":"QwwjimQ2bXsclJRg_R07E","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"1isOVISxVeDAWgsDoC0mZ","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

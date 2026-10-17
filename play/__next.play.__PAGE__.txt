@@ -1,0 +1,39 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/0atbxb9bluxpn.js"
+3:"AdSenseAutoLoader"
+4:I[54874,["$2"],"$3"]
+5:I[39756,["$2"],"default"]
+6:I[37457,["$2"],"default"]
+7:"/_next/static/chunks/2n5qeheznvl4u.js"
+8:I[22016,["$2","$7"],""]
+9:"/_next/static/chunks/0wrm9lxtbr731.js"
+a:I[5500,["$2","$9"],"Image"]
+11:I[97367,["$2"],"OutletBoundary"]
+12:"$Sreact.suspense"
+15:"ViewportBoundary"
+16:I[97367,["$2"],"$15"]
+17:"MetadataBoundary"
+18:I[97367,["$2"],"$17"]
+:HL["/_next/static/chunks/2cmrgcb62agiv.css","style"]
+c:X
+f:X
+f:C
+10:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","main",null,{"className":"content-page","children":[["$","meta",null,{"httpEquiv":"refresh","content":"0; url=/"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"window.location.replace('/');"}}],["$","article",null,{"className":"shell","children":[["$","h1",null,{"children":"Taking you to Mega Drum…"}],["$","p",null,{"children":["If you are not redirected automatically, ",["$","$L8",null,{"href":"/","children":"open the drum player"}],"."]}]]}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/2n5qeheznvl4u.js","async":true}]],["$","$L11",null,{"children":["$","$12",null,{"name":"Next.MetadataOutlet","children":"$@13"}]}]]}],"p":"$@14","v":null,"s":"$c"}}]]
+d:[["children",{"s":"play","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@e","v":"$f","s":"$c"},"c":"$Q10"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2cmrgcb62agiv.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/0atbxb9bluxpn.js","async":true}]],["$","html",null,{"lang":"en","children":[null,["$","body",null,{"children":[["$","$L4",null,{}],["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}],"notFound":[[["$","header",null,{"className":"site-header","children":["$","div",null,{"className":"shell nav-shell","children":[["$","$L8",null,{"className":"brand","href":"/","aria-label":"Mega Drum","children":[["$","$La",null,{"src":"/brand/megadrum-production.png","alt":"","width":44,"height":44,"priority":true}],["$","span",null,{"children":"Mega Drum"}]]}],["$","div",null,{"className":"header-download","children":[["$","span",null,{"children":"Download now"}],["$","div",null,{"className":"store-buttons store-buttons-compact","children":[["$","a",null,{"className":"store-button store-button-apple","href":"https://apps.apple.com/app/mega-drum-drum-simulator/id6789980388","target":"_blank","rel":"noreferrer","aria-label":"Download on the App Store","data-event":"click_app_store","children":["$","$La",null,{"src":"/brand/store/app-store-en.svg","alt":"Download on the App Store","width":120,"height":40}]}],["$","a",null,{"className":"store-button store-button-google","href":"https://play.google.com/store/apps/details?id=com.oliveiralabs.megadrum","target":"_blank","rel":"noreferrer","aria-label":"Get it on Google Play","data-event":"click_google_play","children":["$","$La",null,{"src":"/brand/store/google-play-en.png","alt":"Get it on Google Play","width":155,"height":60}]}]]}]]}]]}]}],["$","main",null,{"className":"content-page","children":["$","article",null,{"className":"shell","children":[["$","p",null,{"className":"eyebrow","children":"404"}],["$","h1",null,{"children":"This beat went missing."}],["$","p",null,{"className":"lead","children":"The page may have moved, but the kit catalog is ready."}],["$","$L8",null,{"className":"button","href":"/kits/","children":"Browse drum kits"}]]}]}],["$","footer",null,{"className":"site-footer","children":[["$","div",null,{"className":"shell footer-grid","children":[["$","div",null,{"children":[["$","$L8",null,{"className":"brand","href":"/","children":[["$","$La",null,{"src":"/brand/megadrum-production.png","alt":"","width":44,"height":44}],["$","span",null,{"children":"Mega Drum"}]]}],["$","p",null,{"children":"Play, practice, and create with a drum kit in your pocket."}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Discover"}],["$","$L8",null,{"href":"/kits/","children":"Kits"}],["$","$L8",null,{"href":"/download/","children":"Get the app"}],["$","$L8",null,{"href":"/help/","children":"Help"}]]}],["$","div",null,{"children":[["$","h2",null,{"children":"Legal"}],["$","$L8",null,{"href":"/privacy/","children":"Privacy"}],null,["$","$L8",null,{"href":"/terms/","children":"Terms"}],["$","$L8",null,{"href":"/copyright/","children":"Copyright"}]]}]]}],["$","div",null,{"className":"shell footer-bottom","children":[["$","span",null,{"children":"© 2026 Oliveira Labs. All rights reserved."}],["$","a",null,{"href":"mailto:antonio.filho128@gmail.com","children":"antonio.filho128@gmail.com"}]]}]]}]],[]]}]]}]]}]]}],"p":"$@b","v":null,"s":"$c"},"c":"$Qd"},"h":{"r":["$","$1","h",{"children":[null,["$","$L16",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f8f6f1"}],["$","meta","3",{"name":"color-scheme","content":"light"}]]}],["$","$L18",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$12",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Play drums online — Mega Drum"}],["$","meta","1",{"name":"description","content":"The Mega Drum online player is now available on the home page."}],["$","meta","2",{"name":"application-name","content":"Mega Drum"}],["$","link","3",{"rel":"manifest","href":"/manifest.webmanifest"}],["$","meta","4",{"name":"robots","content":"noindex, nofollow"}],["$","link","5",{"rel":"canonical","href":"https://megadrum.app/"}],["$","link","6",{"rel":"alternate","hrefLang":"en","href":"https://megadrum.app/"}],["$","link","7",{"rel":"alternate","hrefLang":"pt-BR","href":"https://megadrum.app/pt/"}],["$","link","8",{"rel":"alternate","hrefLang":"x-default","href":"https://megadrum.app/"}],["$","meta","9",{"property":"og:title","content":"Play drums online"}],["$","meta","10",{"property":"og:description","content":"The Mega Drum online player is now available on the home page."}],["$","meta","11",{"property":"og:url","content":"https://megadrum.app/"}],["$","meta","12",{"property":"og:locale","content":"en_US"}],["$","meta","13",{"property":"og:locale:alternate","content":"pt_BR"}],"$L19","$L1a","$L1b","$L1c","$L1d","$L1e"]}]}],null]}],null]}],"p":"$@1f","v":null,"s":"$c"}},"a":"$@20","u":"$@21","b":"1isOVISxVeDAWgsDoC0mZ"}
+22:I[27201,["$2"],"IconMark"]
+13:null
+19:["$","meta","14",{"name":"twitter:card","content":"summary_large_image"}]
+1a:["$","meta","15",{"name":"twitter:title","content":"Play drums online"}]
+1b:["$","meta","16",{"name":"twitter:description","content":"The Mega Drum online player is now available on the home page."}]
+1c:["$","link","17",{"rel":"icon","href":"/brand/megadrum-production.png"}]
+1d:["$","link","18",{"rel":"apple-touch-icon","href":"/brand/megadrum-ios.png"}]
+1e:["$","$L22","19",{}]
+c:300
+21:true
+c:C
+20:0
+e:"$undefined"
+b:"$undefined"
+1f:"$undefined"
+14:"$undefined"

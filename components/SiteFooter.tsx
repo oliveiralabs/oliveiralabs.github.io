@@ -4,6 +4,8 @@ import { getCopy } from "@/lib/copy";
 import { localizedPath } from "@/lib/site";
 import type { Locale } from "@/lib/types";
 
+const hasConsentManager = Boolean(process.env.NEXT_PUBLIC_COOKIEYES_WEBSITE_KEY?.trim());
+
 export function SiteFooter({ locale }: { locale: Locale }) {
   const text = getCopy(locale);
   return (
@@ -25,6 +27,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
         <div>
           <h2>{text.footer.legal}</h2>
           <Link href={localizedPath("/privacy/", locale)}>{text.footer.privacy}</Link>
+          {hasConsentManager ? <button type="button" className="cky-banner-element footer-privacy-button">{text.footer.privacyPreferences}</button> : null}
           <Link href={localizedPath("/terms/", locale)}>{text.footer.terms}</Link>
           <Link href={localizedPath("/copyright/", locale)}>{text.footer.copyright}</Link>
         </div>

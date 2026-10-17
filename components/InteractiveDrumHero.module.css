@@ -1,0 +1,208 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 78px;
+  padding: 28px 0 76px;
+  border-bottom: 1px solid #20322f;
+  background:
+    radial-gradient(circle at 14% 5%, rgba(69, 201, 189, .2), transparent 30%),
+    radial-gradient(circle at 91% 14%, rgba(190, 60, 52, .22), transparent 31%),
+    #07110f;
+  color: #fff;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background-image: radial-gradient(rgba(255, 255, 255, .38) .7px, transparent .7px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to bottom, black, transparent 82%);
+}
+
+.playerPanel {
+  position: relative;
+  z-index: 2;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 27px;
+  background: rgba(3, 9, 8, .76);
+  box-shadow: 0 34px 100px rgba(0, 0, 0, .45), inset 0 1px rgba(255, 255, 255, .08);
+  backdrop-filter: blur(18px);
+}
+
+.stageFrame {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 18px;
+  background: #07100f;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, .45);
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  isolation: isolate;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.stageBackground,
+.stageShade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.stageBackground {
+  z-index: -2;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.stageShade {
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .06), rgba(0, 0, 0, .19));
+}
+
+.pad {
+  position: absolute;
+  z-index: var(--pad-z);
+  left: var(--pad-x);
+  top: var(--pad-y);
+  width: var(--pad-size);
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.pad > span:not(.hitArea) {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+  transform-origin: 50% 58%;
+}
+
+.pad img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 9px 9px rgba(0, 0, 0, .24));
+}
+
+.hitArea {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  width: 72%;
+  height: 58%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pad[data-kind="drum"] .hitArea {
+  width: 62%;
+  height: 62%;
+}
+
+.pad[data-piece^="kick"] .hitArea {
+  width: 58%;
+  height: 68%;
+}
+
+.pad:focus-visible .hitArea {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+  background: rgba(118, 222, 212, .16);
+}
+
+.drumHit {
+  animation: drum-hit 135ms cubic-bezier(.2, .85, .3, 1);
+}
+
+.cymbalHit {
+  animation: cymbal-hit 680ms cubic-bezier(.2, .8, .25, 1);
+}
+
+.rotateHint {
+  display: none;
+}
+
+.playerFooter {
+  display: flex;
+  justify-content: center;
+  padding: 16px 8px 4px;
+  color: #8fa19d;
+  font-size: .8rem;
+  text-align: center;
+}
+
+.playerFooter a {
+  color: #76ded4;
+  font-weight: 800;
+}
+
+.adArea {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 90px;
+  margin-top: 160px;
+}
+
+@keyframes drum-hit {
+  0% { transform: scale(1); }
+  38% { transform: scale(.925); }
+  100% { transform: scale(1); }
+}
+
+@keyframes cymbal-hit {
+  0% { transform: perspective(420px) rotateX(0) rotateZ(0); }
+  18% { transform: perspective(420px) rotateX(16deg) rotateZ(-2deg); }
+  42% { transform: perspective(420px) rotateX(-10deg) rotateZ(1.4deg); }
+  68% { transform: perspective(420px) rotateX(5deg) rotateZ(-.7deg); }
+  100% { transform: perspective(420px) rotateX(0) rotateZ(0); }
+}
+
+@media (max-width: 680px) {
+  .hero { padding: 14px 0 56px; scroll-margin-top: 82px; }
+  .playerPanel { margin-inline: -7px; padding: 8px; border-radius: 20px; }
+  .stageFrame { border-radius: 13px; }
+  .stageFrame { padding-bottom: 9%; }
+  .stage { overflow: visible; aspect-ratio: 2 / 1; }
+  .hitArea { min-width: 44px; min-height: 44px; }
+  .playerFooter { padding-top: 14px; }
+}
+
+@media (max-width: 680px) and (orientation: portrait) {
+  .rotateHint {
+    display: block;
+    margin: 0 0 8px;
+    color: #8fa19d;
+    font-size: .7rem;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drumHit,
+  .cymbalHit { animation-duration: 1ms; }
+}

@@ -3,11 +3,11 @@ import { appStoreUrl, googlePlayUrl } from "@/lib/site";
 import { getCopy } from "@/lib/copy";
 import type { Locale } from "@/lib/types";
 
-export function StoreButtons({ locale, kitId }: { locale: Locale; kitId?: string }) {
+export function StoreButtons({ locale, kitId, compact = false }: { locale: Locale; kitId?: string; compact?: boolean }) {
   const text = getCopy(locale).stores;
   const suffix = kitId ? `&referrer=utm_source%3Dmegadrum.app%26utm_medium%3Dkit_page%26utm_content%3Dkit_${kitId}` : "";
   return (
-    <div className="store-buttons">
+    <div className={`store-buttons${compact ? " store-buttons-compact" : ""}`}>
       <a className="store-button store-button-apple" href={appStoreUrl} target="_blank" rel="noreferrer" aria-label={text.apple} data-event="click_app_store" data-kit-id={kitId}>
         <Image src="/brand/store/app-store-en.svg" alt={text.apple} width={120} height={40} />
       </a>

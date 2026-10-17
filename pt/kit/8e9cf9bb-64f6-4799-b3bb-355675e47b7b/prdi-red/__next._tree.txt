@@ -1,7 +1,7 @@
-:HL["/_next/static/chunks/1julxrusdpyk9.css","style"]
+:HL["/_next/static/chunks/2cmrgcb62agiv.css","style"]
 5:[["children",{"s":"__PAGE__","h":160}]]
 4:[["children",{"s":{"n":"slug","t":"d","k":"prdi-red","s":[]},"h":96,"c":"$Q5"}]]
 3:[["children",{"s":{"n":"id","t":"d","k":"8e9cf9bb-64f6-4799-b3bb-355675e47b7b","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":"kit","h":96,"c":"$Q3"}]]
 1:[["children",{"s":"pt","h":96,"c":"$Q2"}]]
-0:{"b":"QwwjimQ2bXsclJRg_R07E","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"1isOVISxVeDAWgsDoC0mZ","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

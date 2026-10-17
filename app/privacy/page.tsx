@@ -1,8 +1,8 @@
 import { ContentPage } from "@/components/ContentPage";
 import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = pageMetadata({ title: "Privacy", description: "Mega Drum privacy information and the current official Privacy Policy.", path: "/privacy/", locale: "en" });
+export const metadata = pageMetadata({ title: "Privacy", description: "Privacy information for the Mega Drum app and website.", path: "/privacy/", locale: "en" });
 
 export default function Page() {
-  return <ContentPage locale="en" eyebrow="Privacy and transparency" title="Your privacy matters" lead="The existing legal document remains the authoritative Mega Drum Privacy Policy."><p className="notice">Read the current official document at <a href="/privacy-policy-megadrum.html">Mega Drum Privacy Policy</a>. This friendly route does not replace or modify that document.</p><h2>Other Oliveira Labs apps</h2><p>Existing privacy-policy URLs for other apps remain available at their original paths. The new site build verifies that those files are copied without changes.</p></ContentPage>;
+  return <ContentPage locale="en" eyebrow="Privacy and transparency" title="Your privacy matters" lead="The Mega Drum Privacy Policy covers both the app and this website."><p className="notice">Read the <a href="/privacy-policy-megadrum.html">Mega Drum Privacy Policy</a>.</p><h2>Website privacy controls</h2><p>Where required, the website asks for consent before loading advertising. You can review or withdraw your choice through “Privacy preferences” in the footer.</p><h2>Other Oliveira Labs apps</h2><p>Privacy policies for other Oliveira Labs apps remain available at their original addresses.</p></ContentPage>;
 }
