@@ -1,4 +1,4 @@
-import { getFeaturedKits, getKit } from "@/lib/catalog";
+import { getAllKits, getFeaturedKits, getKit } from "@/lib/catalog";
 import { DRUM_KITS } from "@/lib/drum/kits";
 import type { Locale } from "@/lib/types";
 import { PlayDrumsExperience } from "./PlayDrumsExperience";
@@ -8,7 +8,12 @@ import { SiteHeader } from "./SiteHeader";
 export function PlayDrumsPage({ locale }: { locale: Locale }) {
   const playableIds = new Set(DRUM_KITS.map((kit) => kit.id));
   const playableKits = DRUM_KITS.map((kit) => getKit(kit.id)).filter((kit) => kit !== undefined);
-  const appKits = getFeaturedKits().filter((kit) => !playableIds.has(kit.id)).slice(0, 4);
+  const featuredKits = getFeaturedKits().filter((kit) => !playableIds.has(kit.id));
+  const featuredIds = new Set(featuredKits.map((kit) => kit.id));
+  const catalogKits = getAllKits().filter(
+    (kit) => !playableIds.has(kit.id) && !featuredIds.has(kit.id),
+  );
+  const appKits = [...featuredKits, ...catalogKits].slice(0, 18);
 
   return (
     <>
