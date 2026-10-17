@@ -6,7 +6,7 @@ declare global {
   interface Window {
     adsbygoogle?: unknown[];
     getCkyConsent?: () => {
-      categories?: { advertisement?: boolean };
+      categories?: { analytics?: boolean; advertisement?: boolean };
       isUserActionCompleted?: boolean;
     };
   }

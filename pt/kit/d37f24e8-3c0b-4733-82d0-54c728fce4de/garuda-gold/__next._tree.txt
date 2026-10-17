@@ -1,7 +1,7 @@
-:HL["/_next/static/chunks/3gbg9s0jhogh9.css","style"]
+:HL["/_next/static/chunks/2lx0ftn5ii-7i.css","style"]
 5:[["children",{"s":"__PAGE__","h":160}]]
 4:[["children",{"s":{"n":"slug","t":"d","k":"garuda-gold","s":[]},"h":96,"c":"$Q5"}]]
 3:[["children",{"s":{"n":"id","t":"d","k":"d37f24e8-3c0b-4733-82d0-54c728fce4de","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":"kit","h":96,"c":"$Q3"}]]
 1:[["children",{"s":"pt","h":96,"c":"$Q2"}]]
-0:{"b":"yYek_Rhft-GpCJ5I6v36a","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"3Ab0N8kRn4P0PvTbOiqyR","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

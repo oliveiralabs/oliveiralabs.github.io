@@ -5,6 +5,8 @@ export const googlePlayUrl =
   "https://play.google.com/store/apps/details?id=com.oliveiralabs.megadrum";
 export const appStoreUrl =
   "https://apps.apple.com/app/mega-drum-drum-simulator/id6789980388";
+export const googleAnalyticsId =
+  process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID?.trim() || "G-19XR5S6GZB";
 export const isProductionIndexing =
   process.env.NEXT_PUBLIC_SITE_ENV === "production";
 

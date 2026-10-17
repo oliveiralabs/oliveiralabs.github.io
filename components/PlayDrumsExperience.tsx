@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { getCopy } from "@/lib/copy";
 import { DRUM_KITS } from "@/lib/drum/kits";
+import { localizedPath } from "@/lib/site";
 import type { Kit, Locale } from "@/lib/types";
 import { InteractiveDrumHero } from "./InteractiveDrumHero";
 import { KitCard } from "./KitCard";
@@ -37,6 +39,9 @@ export function PlayDrumsExperience({
               <p className="eyebrow">{text.play.moreEyebrow}</p>
               <h2>{text.kit.more}</h2>
             </div>
+            <Link className="section-heading-link" href={localizedPath("/kits/", locale)}>
+              {text.kit.viewAll}<span aria-hidden="true">→</span>
+            </Link>
           </div>
           <div className="kit-grid">
             {playableKits.map((kit) => {
@@ -68,7 +73,7 @@ export function PlayDrumsExperience({
                 </button>
               );
             })}
-            {appKits.map((kit) => <KitCard key={kit.id} kit={kit} locale={locale} />)}
+            {appKits.map((kit) => <KitCard key={kit.id} kit={kit} locale={locale} mutedCover />)}
           </div>
         </div>
       </section>

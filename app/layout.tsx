@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { isProductionIndexing, siteUrl } from "@/lib/site";
+import { googleAnalyticsId, isProductionIndexing, siteUrl } from "@/lib/site";
 import { AdSenseAutoLoader } from "@/components/ads/AdSenseAutoLoader";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -22,9 +24,13 @@ export const viewport: Viewport = { themeColor: "#f8f6f1", colorScheme: "light" 
 
 const cookieYesWebsiteKey = process.env.NEXT_PUBLIC_COOKIEYES_WEBSITE_KEY?.trim();
 
-const consentDefaults = `
+const dataLayerBootstrap = `
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+`;
+
+const consentDefaults = `
+${dataLayerBootstrap}
 gtag("consent", "default", {
   ad_storage: "denied",
   ad_user_data: "denied",
@@ -40,19 +46,27 @@ gtag("set", "url_passthrough", false);
 `;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const analyticsEnabled = isProductionIndexing && Boolean(googleAnalyticsId);
   return (
     <html lang="en">
-      {cookieYesWebsiteKey ? (
-        <head>
-          <script dangerouslySetInnerHTML={{ __html: consentDefaults }} />
+      <head>
+        {analyticsEnabled || cookieYesWebsiteKey ? (
+          <script id="google-tag-bootstrap" dangerouslySetInnerHTML={{ __html: cookieYesWebsiteKey ? consentDefaults : dataLayerBootstrap }} />
+        ) : null}
+        {cookieYesWebsiteKey ? (
           <script
             id="cookieyes"
             type="text/javascript"
             src={`https://cdn-cookieyes.com/client_data/${cookieYesWebsiteKey}/script.js`}
           />
-        </head>
-      ) : null}
-      <body><AdSenseAutoLoader />{children}</body>
+        ) : null}
+      </head>
+      <body>
+        <ScrollToTop />
+        {analyticsEnabled ? <GoogleAnalytics measurementId={googleAnalyticsId} /> : null}
+        <AdSenseAutoLoader />
+        {children}
+      </body>
     </html>
   );
 }

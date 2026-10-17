@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getCopy } from "@/lib/copy";
-import { kitAccessLabel, kitDescription, kitRoute, relatedKits } from "@/lib/catalog";
+import { kitDescription, kitRoute, relatedKits } from "@/lib/catalog";
 import { absoluteUrl, localizedPath } from "@/lib/site";
 import type { Kit, Locale } from "@/lib/types";
 import { KitGrid } from "./KitGrid";
@@ -40,10 +40,6 @@ export function KitDetailPage({ kit, locale }: { kit: Kit; locale: Locale }) {
             <p className="eyebrow">{text.available}</p>
             <h1>{kit.name}</h1>
             <p className="lead compact">{description}</p>
-            <dl className="kit-facts">
-              <div><dt>{text.catalog}</dt><dd>{text.official}</dd></div>
-              <div><dt>{text.access}</dt><dd>{kitAccessLabel(kit, locale)}</dd></div>
-            </dl>
             <h2 className="cta-heading">{text.use}</h2>
             <StoreButtons locale={locale} kitId={kit.id} />
             <p className="microcopy">{text.note}</p>
@@ -51,7 +47,12 @@ export function KitDetailPage({ kit, locale }: { kit: Kit; locale: Locale }) {
         </section>
         <section className="section related-section">
           <div className="shell">
-            <div className="section-heading"><h2>{text.more}</h2></div>
+            <div className="section-heading">
+              <h2>{text.more}</h2>
+              <Link className="section-heading-link" href={localizedPath("/kits/", locale)}>
+                {text.viewAll}<span aria-hidden="true">→</span>
+              </Link>
+            </div>
             <KitGrid kits={relatedKits(kit)} locale={locale} />
           </div>
         </section>

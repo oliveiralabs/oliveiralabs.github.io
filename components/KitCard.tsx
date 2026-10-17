@@ -3,9 +3,9 @@ import Link from "next/link";
 import { kitAccessLabel, kitRoute } from "@/lib/catalog";
 import type { Kit, Locale } from "@/lib/types";
 
-export function KitCard({ kit, locale }: { kit: Kit; locale: Locale }) {
+export function KitCard({ kit, locale, mutedCover = false }: { kit: Kit; locale: Locale; mutedCover?: boolean }) {
   return (
-    <Link className="kit-card" href={kitRoute(kit, locale)}>
+    <Link className={`kit-card${mutedCover ? " kit-card-muted" : ""}`} href={kitRoute(kit, locale)}>
       <span className="kit-cover">
         <Image
           src={kit.cover}

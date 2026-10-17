@@ -5,7 +5,7 @@ import { useEffect } from "react";
 declare global {
   interface Window {
     getCkyConsent?: () => {
-      categories?: { advertisement?: boolean };
+      categories?: { analytics?: boolean; advertisement?: boolean };
       isUserActionCompleted?: boolean;
     };
   }
