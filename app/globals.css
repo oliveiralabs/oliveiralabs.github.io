@@ -67,11 +67,11 @@ h2 { margin-bottom: 18px; font-size: clamp(2.25rem, 4.5vw, 4.2rem); }
 .store-button { display: flex; align-items: center; min-height: 60px; line-height: 0; transition: transform .2s ease; }
 .store-button:hover { transform: translateY(-2px); }
 .store-button img { display: block; width: auto; }
-.store-button-apple img { height: 40px; }
+.store-button-apple img { height: 43px; }
 .store-button-google img { height: 60px; }
 .store-buttons-compact { flex-wrap: nowrap; gap: 12px; margin-top: 0; }
 .store-buttons-compact .store-button { min-height: 60px; }
-.store-buttons-compact .store-button-apple img { height: 40px; }
+.store-buttons-compact .store-button-apple img { height: 43px; }
 .store-buttons-compact .store-button-google img { height: 60px; }
 
 .page-hero { padding-block: 100px 80px; border-bottom: 1px solid var(--line); background: linear-gradient(145deg, #fffdfa, #f2eee7); }
@@ -134,7 +134,7 @@ h2 { margin-bottom: 18px; font-size: clamp(2.25rem, 4.5vw, 4.2rem); }
   .header-download > span { font-size: .62rem; letter-spacing: .06em; }
   .store-buttons-compact { gap: 6px; }
   .store-buttons-compact .store-button { min-height: 46px; }
-  .store-buttons-compact .store-button-apple img { height: 31px; }
+  .store-buttons-compact .store-button-apple img { height: 34px; }
   .store-buttons-compact .store-button-google img { height: 46px; }
   h1 { font-size: clamp(3rem, 15vw, 4.7rem); }
   .section { padding-block: 72px; }
