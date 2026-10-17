@@ -20,6 +20,19 @@ export function GoogleAnalytics({ measurementId }: { measurementId: string }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag =
+      window.gtag ||
+      ((...args: unknown[]) => {
+        window.dataLayer.push(args);
+      });
+
+    window.gtag("js", new Date());
+    window.gtag("config", measurementId, { send_page_view: false });
+    setReady(true);
+  }, [measurementId]);
+
+  useEffect(() => {
     if (!ready || !window.gtag) return;
     window.gtag("event", "page_view", {
       page_path: `${pathname}${window.location.search}`,
@@ -62,16 +75,5 @@ export function GoogleAnalytics({ measurementId }: { measurementId: string }) {
     };
   }, []);
 
-  return (
-    <Script
-      id="google-analytics"
-      src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
-      strategy="afterInteractive"
-      onLoad={() => {
-        window.gtag?.("js", new Date());
-        window.gtag?.("config", measurementId, { send_page_view: false });
-        setReady(true);
-      }}
-    />
-  );
+  return <Script id="google-analytics" src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} strategy="afterInteractive" />;
 }
