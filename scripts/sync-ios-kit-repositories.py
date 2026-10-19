@@ -24,6 +24,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--generated", required=True, type=Path)
     parser.add_argument("--free-repo", required=True, type=Path)
     parser.add_argument("--premium-repo", required=True, type=Path)
+    parser.add_argument(
+        "--piece-overrides",
+        type=Path,
+        help=(
+            "Optional reviewed piece root. PNG files under source-<id>/ replace the same "
+            "megadrumkit/<file> entry and trigger a package version bump."
+        ),
+    )
     parser.add_argument("--apply", action="store_true")
     return parser.parse_args()
 
@@ -56,20 +64,31 @@ def repository_for(source_id: str, free_repo: Path, premium_repo: Path) -> Path:
     raise RuntimeError(f"Cannot resolve a unique iOS repository for source {source_id}")
 
 
-def archive_changes(archive: Path, cover: bytes, background: bytes) -> bool:
+def piece_overrides(root: Path | None, source_id: str) -> dict[str, bytes]:
+    if root is None:
+        return {}
+    source = root.resolve() / f"source-{source_id}"
+    if not source.is_dir():
+        return {}
+    ignored = {"contact-sheet.png"}
+    return {
+        file.name: file.read_bytes()
+        for file in sorted(source.glob("*.png"))
+        if file.name not in ignored
+    }
+
+
+def archive_changes(archive: Path, replacements: dict[str, bytes]) -> bool:
     with zipfile.ZipFile(archive) as source:
         names = set(source.namelist())
-        expected = {"megadrumkit/cover.png", "megadrumkit/background.png"}
+        expected = set(replacements)
         missing = expected - names
         if missing:
             raise RuntimeError(f"{archive} is missing {', '.join(sorted(missing))}")
-        return (
-            source.read("megadrumkit/cover.png") != cover
-            or source.read("megadrumkit/background.png") != background
-        )
+        return any(source.read(name) != data for name, data in replacements.items())
 
 
-def rebuild_archive(archive: Path, cover: bytes, background: bytes) -> None:
+def rebuild_archive(archive: Path, replacements: dict[str, bytes]) -> None:
     fd, temporary_name = tempfile.mkstemp(prefix=f".{archive.name}.", dir=archive.parent)
     os.close(fd)
     temporary = Path(temporary_name)
@@ -78,10 +97,8 @@ def rebuild_archive(archive: Path, cover: bytes, background: bytes) -> None:
             target.comment = source.comment
             for info in source.infolist():
                 data = source.read(info.filename)
-                if info.filename == "megadrumkit/cover.png":
-                    data = cover
-                elif info.filename == "megadrumkit/background.png":
-                    data = background
+                if info.filename in replacements:
+                    data = replacements[info.filename]
                 target.writestr(info, data)
         temporary.replace(archive)
     finally:
@@ -109,6 +126,7 @@ def main() -> None:
     archive_updates = 0
     version_updates = 0
     reviewed_backgrounds = 0
+    reviewed_pieces = 0
     per_repo = {args.free_repo: {"covers": 0, "archives": 0}, args.premium_repo: {"covers": 0, "archives": 0}}
 
     for output_dir, manifest in manifests:
@@ -134,16 +152,22 @@ def main() -> None:
             entry["coverUrl"] = next_url
             url_updates += 1
 
-        if manifest["background"]["mode"] != "reviewed-override":
+        overrides = piece_overrides(args.piece_overrides, source_id)
+        reviewed_pieces += len(overrides)
+        has_reviewed_background = manifest["background"]["mode"] == "reviewed-override"
+        if not has_reviewed_background and not overrides:
             continue
 
-        reviewed_backgrounds += 1
-        background_path = Path(manifest["background"]["file"])
-        background_data = background_path.read_bytes()
+        replacements = {"megadrumkit/cover.png": cover_data}
+        if has_reviewed_background:
+            reviewed_backgrounds += 1
+            background_path = Path(manifest["background"]["file"])
+            replacements["megadrumkit/background.png"] = background_path.read_bytes()
+        replacements.update({f"megadrumkit/{name}": data for name, data in overrides.items()})
         archive = repo / source_id / "kit.megadrum"
         if not archive.is_file():
             raise RuntimeError(f"Missing kit archive: {archive}")
-        if archive_changes(archive, cover_data, background_data):
+        if archive_changes(archive, replacements):
             archive_updates += 1
             per_repo[repo]["archives"] += 1
             current_version = entry.get("version", 1)
@@ -152,7 +176,7 @@ def main() -> None:
             entry["version"] = current_version + 1
             version_updates += 1
             if args.apply:
-                rebuild_archive(archive, cover_data, background_data)
+                rebuild_archive(archive, replacements)
 
     if args.apply:
         for repo, entries in catalogs.items():
@@ -166,6 +190,7 @@ def main() -> None:
         "coverUpdates": cover_updates,
         "coverUrlUpdates": url_updates,
         "reviewedBackgrounds": reviewed_backgrounds,
+        "reviewedPieces": reviewed_pieces,
         "archiveUpdates": archive_updates,
         "packageVersionUpdates": version_updates,
         "repositories": {

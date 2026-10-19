@@ -99,6 +99,12 @@ def parse_args() -> argparse.Namespace:
     selection.add_argument("--all", action="store_true")
     generate.add_argument("--output", type=Path, required=True)
     generate.add_argument(
+        "--cover-version",
+        type=int,
+        default=2,
+        help="Version suffix used by the immutable R2 cover path (default: 2).",
+    )
+    generate.add_argument(
         "--background-overrides",
         type=Path,
         help=(
@@ -448,7 +454,7 @@ def generate(args: argparse.Namespace) -> None:
                     "effects": "none",
                     "androidContract": android_contract,
                 },
-                "suggestedR2Path": f"kits/{kit.source_id}/cover-v2.png",
+                "suggestedR2Path": f"kits/{kit.source_id}/cover-v{args.cover_version}.png",
                 "catalogRecords": [],
             }
             (output_dir / "manifest.json").write_text(
