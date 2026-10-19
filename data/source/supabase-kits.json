@@ -145,7 +145,7 @@
   {
     "id": "2e49b1fc-aaeb-4fc7-8276-7947c1e78f39",
     "name": "Guns n' Roses Standard",
-    "cover_url": "https://pub-00a55f0ffe95470bbb67b739eabf6898.r2.dev/kits/17/cover-v2.png",
+    "cover_url": "https://pub-00a55f0ffe95470bbb67b739eabf6898.r2.dev/kits/17/cover-v3.png",
     "background_url": "https://pub-00a55f0ffe95470bbb67b739eabf6898.r2.dev/kits/17/background.png",
     "is_premium": false,
     "is_default": true,
@@ -904,7 +904,7 @@
   {
     "id": "0aba0dc3-29b4-4f60-adda-add68147c479",
     "name": "Green Metal",
-    "cover_url": "https://pub-00a55f0ffe95470bbb67b739eabf6898.r2.dev/kits/95/cover-v2.png",
+    "cover_url": "https://pub-00a55f0ffe95470bbb67b739eabf6898.r2.dev/kits/95/cover-v3.png",
     "background_url": "https://pub-00a55f0ffe95470bbb67b739eabf6898.r2.dev/kits/95/background-v2.png",
     "is_premium": false,
     "is_default": false,
@@ -1080,7 +1080,7 @@
   {
     "id": "4b53f684-cbd5-4d0c-a74a-189bab49b78d",
     "name": "Brooks",
-    "cover_url": "https://pub-00a55f0ffe95470bbb67b739eabf6898.r2.dev/kits/111/cover-v2.png",
+    "cover_url": "https://pub-00a55f0ffe95470bbb67b739eabf6898.r2.dev/kits/111/cover-v3.png",
     "background_url": "https://pub-00a55f0ffe95470bbb67b739eabf6898.r2.dev/kits/111/background.png",
     "is_premium": false,
     "is_default": false,
@@ -1443,7 +1443,7 @@
   {
     "id": "e3b5302a-97ed-4568-b76b-e5e08a44a384",
     "name": "Green Metal",
-    "cover_url": "https://pub-00a55f0ffe95470bbb67b739eabf6898.r2.dev/kits/1017/cover-v2.png",
+    "cover_url": "https://pub-00a55f0ffe95470bbb67b739eabf6898.r2.dev/kits/1017/cover-v3.png",
     "background_url": "https://pub-00a55f0ffe95470bbb67b739eabf6898.r2.dev/kits/1017/background-v2.png",
     "is_premium": true,
     "is_default": false,
