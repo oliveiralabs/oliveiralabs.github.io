@@ -18,6 +18,8 @@ work-in-progress files that must not be released yet.
   `img-v2`, plus `cover-v3`.
 - The free-kit repository packages and index were synchronized in commit
   `5057861`; both affected package versions are now `2`.
+- The refreshed static web catalog and its downloaded cover assets were
+  published in web commits `b6d220e2` and `5d61ba54`.
 - Valuable kit analytics events are shipped in Android commit `c1ef5e2` and
   iOS commit `53cad36`.
 
