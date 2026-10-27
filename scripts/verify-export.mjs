@@ -77,7 +77,14 @@ for (const file of kitPages) {
 const robots = await readFile(path.join(out, "robots.txt"), "utf8");
 if (isProduction) {
   if (!robots.includes("Allow: /")) errors.push("Production robots.txt does not allow crawling");
-  if (!robots.includes("Disallow: /search/")) errors.push("Production robots.txt does not exclude search pages");
+  if (robots.includes("Disallow:")) errors.push("Production robots.txt unexpectedly blocks crawling");
+
+  for (const searchPath of ["search/index.html", "pt/search/index.html"]) {
+    const searchHtml = await readFile(path.join(out, searchPath), "utf8");
+    if (!searchHtml.includes('name="robots" content="noindex, follow"')) {
+      errors.push(`Search page must be crawlable but excluded from indexing: ${searchPath}`);
+    }
+  }
 } else if (!robots.includes("Disallow: /")) {
   errors.push("Preview robots.txt does not block crawling");
 }

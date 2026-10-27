@@ -27,7 +27,7 @@ export function pageMetadata({
       canonical: path,
       languages: { en: enPath, "pt-BR": ptPath, "x-default": enPath },
     },
-    robots: { index: canIndex, follow: canIndex },
+    robots: { index: canIndex, follow: isProductionIndexing },
     openGraph: {
       title,
       description,

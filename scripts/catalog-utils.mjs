@@ -44,7 +44,7 @@ export function normalizeKit(entry, editorial) {
     sortOrder: Number(entry.sort_order),
     cover: `/catalog/kits/${id}/cover.png`,
     sourceCoverUrl: entry.cover_url,
-    approvedForIndexing: editorial.approvedForIndexing.includes(id),
+    approvedForIndexing: !editorial.excludedFromIndexing.includes(id),
     featured: editorial.featured.includes(id),
     description: overrides.description ?? null,
     descriptionPt: overrides.descriptionPt ?? null,

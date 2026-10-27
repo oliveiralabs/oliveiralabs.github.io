@@ -19,7 +19,7 @@ test("kit identity is the UUID used by the current app", () => {
 });
 
 test("routes remain unique when two kits share a slug", () => {
-  const editorial = { approvedForIndexing: [], featured: [], metadata: {} };
+  const editorial = { excludedFromIndexing: [], featured: [], metadata: {} };
   const a = normalizeKit(
     { id: "4ab74d1d-cdcf-417e-9053-070de6ab7b52", name: "Metallica Lars", cover_url: "https://example.com/a.png", sort_order: 1 },
     editorial,
@@ -30,6 +30,21 @@ test("routes remain unique when two kits share a slug", () => {
   );
   assert.notEqual(publicKitRoute(a), publicKitRoute(b));
   assert.equal(publicKitRoute(a, "pt"), "/pt/kit/4ab74d1d-cdcf-417e-9053-070de6ab7b52/metallica-lars/");
+});
+
+test("public kits are indexable unless explicitly excluded", () => {
+  const id = "4ab74d1d-cdcf-417e-9053-070de6ab7b52";
+  const entry = {
+    id,
+    name: "Sabian",
+    cover_url: "https://example.com/sabian.png",
+    sort_order: 1,
+  };
+  const editorial = { excludedFromIndexing: [], featured: [], metadata: {} };
+
+  assert.equal(normalizeKit(entry, editorial).approvedForIndexing, true);
+  editorial.excludedFromIndexing.push(id);
+  assert.equal(normalizeKit(entry, editorial).approvedForIndexing, false);
 });
 
 test("access rules reflect the current app catalog flags", () => {
