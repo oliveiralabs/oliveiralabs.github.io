@@ -23,7 +23,7 @@
     "check": "npm run catalog:sync && npm run catalog:validate && npm run lint && npm run typecheck && npm test && npm run build"
   },
   "dependencies": {
-    "next": "16.4.0",
+    "next": "16.4.1",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
