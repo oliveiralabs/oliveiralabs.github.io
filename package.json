@@ -1,37 +1,15 @@
 {
-  "name": "megadrum-web",
-  "version": "0.1.0",
+  "name": "oliveiralabs-portfolio",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "predev": "npm run catalog:sync",
-    "dev": "next dev",
-    "catalog:refresh": "node scripts/fetch-supabase-catalog.mjs",
-    "catalog:sync": "node scripts/sync-catalog.mjs",
-    "catalog:validate": "node scripts/validate-catalog.mjs",
-    "covers:audit": "python3 scripts/kit-cover-pipeline.py audit",
-    "covers:generate": "python3 scripts/kit-cover-pipeline.py generate",
-    "covers:publish": "python3 scripts/publish-kit-covers.py",
-    "drum:prepare": "node scripts/prepare-web-drum-kits.mjs",
-    "legacy:verify": "node scripts/verify-legacy.mjs",
-    "prebuild": "npm run catalog:sync && npm run catalog:validate",
-    "build": "next build && node scripts/copy-legacy.mjs && npm run legacy:verify && node scripts/verify-export.mjs",
-    "build:production": "NEXT_PUBLIC_SITE_ENV=production npm run build",
-    "start": "npx serve out",
-    "typecheck": "tsc --noEmit",
-    "lint": "oxlint app components lib scripts tests",
-    "test": "node --test tests/*.test.mjs",
-    "check": "npm run catalog:sync && npm run catalog:validate && npm run lint && npm run typecheck && npm test && npm run build"
+    "build": "node scripts/build-site.mjs",
+    "verify:static": "node scripts/static-contract.mjs --root dist",
+    "verify:site": "node scripts/verify-site.mjs",
+    "check": "npm run build && npm run verify:static && npm run verify:site",
+    "start": "npx --yes serve dist"
   },
-  "dependencies": {
-    "next": "16.4.0",
-    "react": "19.3.0",
-    "react-dom": "19.3.0"
-  },
-  "devDependencies": {
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "oxlint": "1.87.0",
-    "typescript": "6.0.3"
+  "engines": {
+    "node": ">=22"
   }
 }

@@ -6,6 +6,7 @@ Gemfile.lock
 node_modules/
 .next/
 out/
+dist/
 *.tsbuildinfo
 
 # Local public-service configuration (never commit local env files).

@@ -1,5 +1,0 @@
-User-Agent: *
-Allow: /
-
-Host: https://megadrum.app
-Sitemap: https://megadrum.app/sitemap.xml
