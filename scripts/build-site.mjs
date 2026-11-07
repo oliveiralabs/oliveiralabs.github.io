@@ -20,7 +20,19 @@ const jsonLd = (data) => `<script type="application/ld+json">${JSON.stringify(da
 const route = (locale, pathname = "/") => `${locales[locale].prefix}${pathname}` || "/";
 const absolute = (pathname) => `${siteUrl}${pathname}`;
 const contentFor = (app, locale) => app.content[locale];
-const projectMail = (locale) => `mailto:${contactEmail}?subject=${encodeURIComponent(locale === "pt" ? "Novo projeto — Oliveira Labs" : "New project — Oliveira Labs")}`;
+const projectMail = (locale) => {
+  const subject = locale === "pt" ? "Novo projeto — Oliveira Labs" : "New project — Oliveira Labs";
+  const body = locale === "pt"
+    ? `Olá, Oliveira Labs!\n\nGostaria de conversar sobre um projeto.\n\nProjeto ou ideia:\nTipo de produto (aplicativo, sistema web ou outro):\nObjetivo principal:\nPrazo esperado (se houver):\n\nObrigado(a)!`
+    : `Hello, Oliveira Labs!\n\nI'd like to discuss a project.\n\nProject or idea:\nType of product (app, web system or other):\nMain goal:\nExpected timeline (if known):\n\nThank you!`;
+  return `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+};
+
+const homeApps = [
+  apps.find((app) => app.slug === "mega-drum"),
+  apps.find((app) => app.slug === "pads-worship"),
+  ...apps.filter((app) => !["mega-drum", "pads-worship"].includes(app.slug)),
+];
 
 function header(locale, alternatePath) {
   const t = copy[locale];
@@ -132,7 +144,7 @@ function labVisual(locale) {
     <div class="lab-orbit lab-orbit-one" aria-hidden="true"></div><div class="lab-orbit lab-orbit-two" aria-hidden="true"></div>
     <div class="lab-core"><span class="bubble bubble-one" aria-hidden="true"></span><span class="bubble bubble-two" aria-hidden="true"></span><img src="/site-assets/brand/oliveira-labs.png" width="256" height="256" alt="Oliveira Labs"></div>
     <a class="floating-product floating-drum" href="${route(locale, "/apps/mega-drum/")}"><img src="${apps[0].icon}" width="66" height="66" alt=""><span>Mega Drum</span></a>
-    <a class="floating-product floating-bass" href="${route(locale, "/apps/mega-bass/")}"><img src="${apps[1].icon}" width="58" height="58" alt=""><span>Mega Bass</span></a>
+    <a class="floating-product floating-pads" href="${route(locale, "/apps/pads-worship/")}"><img src="${apps.find((app) => app.slug === "pads-worship").icon}" width="58" height="58" alt=""><span>Pads Worship</span></a>
     <a class="floating-product floating-piano" href="${route(locale, "/apps/mega-piano/")}"><img src="${apps[2].icon}" width="54" height="54" alt=""><span>Mega Piano</span></a>
     <div class="floating-code" aria-hidden="true"><span>&lt;/&gt;</span><strong>${locale === "pt" ? "Aplicativos + sistemas" : "Apps + systems"}</strong></div>
     <div class="lab-note"><span></span><div><strong>${escapeHtml(t.visualTitle)}</strong><small>${escapeHtml(t.visualText)}</small></div></div>
@@ -167,7 +179,7 @@ function homePage(locale) {
   const content = `
     <section class="hero"><div class="shell hero-grid"><div class="hero-copy"><p class="hero-badge"><span aria-hidden="true">⌁</span>${escapeHtml(t.hero.badge)}</p><h1>${escapeHtml(t.hero.title)}</h1><p>${escapeHtml(t.hero.text)}</p><div class="hero-actions"><a class="button button-primary" href="#products">${escapeHtml(t.hero.primary)}</a><a class="button button-secondary" href="${projectMail(locale)}">${escapeHtml(t.hero.secondary)}<span aria-hidden="true">↗</span></a></div></div>${labVisual(locale)}</div></section>
     ${proofStrip(locale)}
-    <section class="products-section" id="products"><div class="shell">${sectionHeading(t.products.kicker, t.products.title, t.products.text, "center")}<div class="product-grid">${apps.map((app, index) => productCard(app, locale, index < 2 ? "featured" : "standard")).join("")}</div><div class="center-action"><a class="button button-secondary" href="${route(locale, "/apps/")}">${t.products.all}<span aria-hidden="true">↗</span></a></div></div></section>
+    <section class="products-section" id="products"><div class="shell">${sectionHeading(t.products.kicker, t.products.title, t.products.text, "center")}<div class="product-grid">${homeApps.map((app, index) => productCard(app, locale, index < 2 ? "featured" : "standard")).join("")}</div><div class="center-action"><a class="button button-secondary" href="${route(locale, "/apps/")}">${t.products.all}<span aria-hidden="true">↗</span></a></div></div></section>
     ${servicesBlock(locale)}
     <section class="case-study"><div class="shell case-grid"><div class="case-media"><img src="/assets/img/megadrum-showcase.webp" width="1847" height="851" alt="Mega Drum interface" loading="lazy"><div class="case-stat"><strong>1M+</strong><span>${escapeHtml(t.caseStudy.stat)}</span></div></div><div class="case-copy"><p class="kicker"><span aria-hidden="true"></span>${escapeHtml(t.caseStudy.kicker)}</p><h2>${escapeHtml(t.caseStudy.title)}</h2><p>${escapeHtml(t.caseStudy.text)}</p><div class="case-detail"><span>Android · iOS · Web</span><span>${escapeHtml(t.caseStudy.secondary)}</span></div><a class="button button-secondary" href="${route(locale, "/apps/mega-drum/")}">${escapeHtml(t.caseStudy.link)}<span aria-hidden="true">↗</span></a></div></div></section>
     <section class="about-section"><div class="shell about-grid"><div class="about-logo"><img src="/site-assets/brand/oliveira-labs.png" width="260" height="260" alt="Oliveira Labs"></div><div>${sectionHeading(t.about.kicker, t.about.title, t.about.text)}<a class="text-link" href="${route(locale, "/about/")}">${escapeHtml(t.about.link)}<span aria-hidden="true">↗</span></a></div></div></section>

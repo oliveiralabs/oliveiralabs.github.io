@@ -182,8 +182,7 @@ export const apps = [
     icon: "/assets/img/backjam.png",
     accent: "#F0A500",
     platforms: ["Android"],
-    stores: {},
-    status: "coming",
+    stores: { google: "https://play.google.com/store/apps/details?id=com.backing" },
     privacy: "/privacy-policy-backjam.html",
     content: {
       en: {
