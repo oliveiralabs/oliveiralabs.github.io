@@ -1,0 +1,586 @@
+{
+  "version": 1,
+  "description": "Public Oliveira Labs paths that must remain available without URL changes.",
+  "files": [
+    {
+      "path": ".nojekyll",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "account-delete-annot.html",
+      "bytes": 871,
+      "sha256": "dcfaf76f552c23ab9f69431034dbe88b5a028832ce6267b9d326030d1e6a0926"
+    },
+    {
+      "path": "account-delete-percussion.html",
+      "bytes": 5713,
+      "sha256": "320972a80536a55bf9d287ebfe3f833b09aa6b9af74e884389754eda3097b26d"
+    },
+    {
+      "path": "ads.txt",
+      "bytes": 59,
+      "sha256": "c767f16a723affd90360a7573dac02effea759c4f49e9182294fade15f234995"
+    },
+    {
+      "path": "app-ads.txt",
+      "bytes": 116,
+      "sha256": "605c889217cc80274fae7c9ffc5264d6fca2769e06877bdebb51baad5cfd464a"
+    },
+    {
+      "path": "googlefb0aa4cac85edf36.html",
+      "bytes": 53,
+      "sha256": "59d6e1045e997e4a0987accc443463daefd2f100e08b7ea668bb9f8b63322693"
+    },
+    {
+      "path": "index2.html",
+      "bytes": 5501,
+      "sha256": "c8d34e37552c528c550bf1002bc3ef2c6381d15bc5f0ecade848dba3feae71a9"
+    },
+    {
+      "path": "megabass-marketing.html",
+      "bytes": 6129,
+      "sha256": "51adabb082915f679186e79fda99580609a901684ea9a363f27d01f1a2f9a5be"
+    },
+    {
+      "path": "megabass-support.html",
+      "bytes": 6122,
+      "sha256": "8616d732eace322d8018eff341bfb388c4d6062d4772f4490c6c4207b66fb176"
+    },
+    {
+      "path": "megadrum-marketing.html",
+      "bytes": 7876,
+      "sha256": "9eb60c1d9a4478208f4f6f87bf6ae64521e32c6b3821edabbba46b697385a2d8"
+    },
+    {
+      "path": "megadrum-support.html",
+      "bytes": 8887,
+      "sha256": "a0cb3e5d60693d64f11767cb62b4b7deac0bfca1db54e5923af5b4690e346ffb"
+    },
+    {
+      "path": "megapiano-support.html",
+      "bytes": 6008,
+      "sha256": "c2af087071a3b5ff48489f238d8ac4adaba35a5d85632dd9c4d463c816ecd683"
+    },
+    {
+      "path": "pads-worship-support.html",
+      "bytes": 1006,
+      "sha256": "c5ade752bab6c955bb3ddf96e8cc1f1cabae793f65faedeed1b94904aea02096"
+    },
+    {
+      "path": "padsworship-marketing.html",
+      "bytes": 1032,
+      "sha256": "d9f7fca9ab4bc0f96aa916dd2de1c946f170a6773da044735da5656415ba469f"
+    },
+    {
+      "path": "padsworship-privacy-policy.html",
+      "bytes": 1573,
+      "sha256": "771cc473785e389a8157762d4b5ce64148a68063aea28d59a8cf21058eb983fa"
+    },
+    {
+      "path": "privacy-policy-annot.html",
+      "bytes": 10492,
+      "sha256": "e3bee33b21d5e6169105227d5589709a1d761c2309d46dff92851baa4f863d86"
+    },
+    {
+      "path": "privacy-policy-backjam.html",
+      "bytes": 9838,
+      "sha256": "17b642417afde27a4372b113f2bef7b59ba39191a7103ca397d26c962339c6d0"
+    },
+    {
+      "path": "privacy-policy-drumgame.html",
+      "bytes": 10500,
+      "sha256": "e2852318ad6c002b7e5fd00ba451ea22a81bc337368fe4e2f27f54107a60ff23"
+    },
+    {
+      "path": "privacy-policy-megabass.html",
+      "bytes": 5331,
+      "sha256": "62488f3fc115e5335f5628c84e2be3fb38b7774e3035a82c54bf06714cdb5117"
+    },
+    {
+      "path": "privacy-policy-megadrum.html",
+      "bytes": 7622,
+      "sha256": "0df8971b05504f4a7a46c691a060886551f6e5730c2c840a33b3d3cd36e907e9"
+    },
+    {
+      "path": "privacy-policy-megapiano.html",
+      "bytes": 8277,
+      "sha256": "cd7dd696efbac48d082f717f17255d1f34e57c0c2cbda1a8eeda43062f352e34"
+    },
+    {
+      "path": "privacy-policy-metronome.html",
+      "bytes": 10508,
+      "sha256": "712688631a2d4484bd70a7e68564777522a477823277838ad5c0e716ffcebc57"
+    },
+    {
+      "path": "privacy-policy-noisy.html",
+      "bytes": 10492,
+      "sha256": "28ac1523e674c27823b3f573f5878e4450fa0cb182d19dbfadc054e1875fb33e"
+    },
+    {
+      "path": "privacy-policy-pads-worship.html",
+      "bytes": 10506,
+      "sha256": "f14a9f09af9f7f8c432f63f026064416006d1a73d2c3664dc9ed6881e50c4d3c"
+    },
+    {
+      "path": "privacy-policy-percussion.html",
+      "bytes": 10518,
+      "sha256": "58945c45a89100ca02551332c0f67415fab8867003248d8d414fe5932ea24f5e"
+    },
+    {
+      "path": "privacy-policy.html",
+      "bytes": 10500,
+      "sha256": "92641d0e514996c40ae7ec217f848176e49197f0d9c070e4d2a920551e4ff3b1"
+    },
+    {
+      "path": "readme.md",
+      "bytes": 387,
+      "sha256": "ab3025586154cd2e2c238ded84b05bb732070eaf9bdfa7ce6d9de7965e63ba1f"
+    },
+    {
+      "path": "assets/css/megadrum-home.css",
+      "bytes": 20858,
+      "sha256": "f02fbe5c0a6f6d9f46e579bb1f362f02db33df25fc9a1019374dc8492992497d"
+    },
+    {
+      "path": "assets/css/megadrum-pages.css",
+      "bytes": 9228,
+      "sha256": "bcbaab770e179d17166bc7919c6bbbf6bac0834f7af38473688395c482dbb7aa"
+    },
+    {
+      "path": "assets/css/style.css",
+      "bytes": 10699,
+      "sha256": "7575d18664e90253bb9951bd2206a5531f21c118f3d1b91663154a58ac777530"
+    },
+    {
+      "path": "assets/css/style2.css",
+      "bytes": 2761,
+      "sha256": "44006e6d543807d367e02dc154afa98553360760469f16a263b67ae30cd16b58"
+    },
+    {
+      "path": "assets/img/app-mega-bass-play.png",
+      "bytes": 474874,
+      "sha256": "b49ed78d4eb7a025a1835b1288728222cfbf1e42bb6ab73a901fa0f68a59d9a6"
+    },
+    {
+      "path": "assets/img/app-mega-piano-play.png",
+      "bytes": 376621,
+      "sha256": "7c3be535d78a1ec84fe6f1781b4b2be8113cb7334b8c83f3cd71a4b83ae76f8c"
+    },
+    {
+      "path": "assets/img/app-pads-worship-play.png",
+      "bytes": 319132,
+      "sha256": "ff71f6be91097969c5238d07a9ec17bd586b3dd0144ce9f48efbeaf462be1b41"
+    },
+    {
+      "path": "assets/img/app-percussion-play.png",
+      "bytes": 381850,
+      "sha256": "c92e022abaf2a98788d8e6d377682a4f6c19038f887bbad09eed058930ecaa6b"
+    },
+    {
+      "path": "assets/img/backjam.png",
+      "bytes": 40086,
+      "sha256": "79c34aba0d98510e80498fb4158dad15cd4f0d40a8da05195ecddc0b05ae0c24"
+    },
+    {
+      "path": "assets/img/google-play-badge.png",
+      "bytes": 13957,
+      "sha256": "215e46442382af6784b854e56f70c527d0d205a367c58567c308d3c3fbe31cc2"
+    },
+    {
+      "path": "assets/img/logo-hd.png",
+      "bytes": 8807,
+      "sha256": "784a5f46db6b1033aaa9329027c86ea231d1f4bcb4525527942cbd44893461a8"
+    },
+    {
+      "path": "assets/img/logo.png",
+      "bytes": 5461,
+      "sha256": "4d737f92b8430c4ac32661343214faa90f9b5212c466aec17a816253c84b8941"
+    },
+    {
+      "path": "assets/img/megabass-ios.png",
+      "bytes": 705784,
+      "sha256": "88cafda68072ec4510b694e7629a8308d25cbaf7f950c74c7404241158854800"
+    },
+    {
+      "path": "assets/img/megabass-lessons.png",
+      "bytes": 889877,
+      "sha256": "a1aae706bb9e702a320b2e0ae3a6b15f324fc6e11fe1c1b83efe316b5daec25d"
+    },
+    {
+      "path": "assets/img/megabass-main.png",
+      "bytes": 2421320,
+      "sha256": "383ee786ef92111ac6b4c5156cfb3badffbcf63806fa18f3906a2026413cd90e"
+    },
+    {
+      "path": "assets/img/megabass-music.png",
+      "bytes": 3093956,
+      "sha256": "af216d5e2562377003f95d183e0935d3440f0d6fc6cb86582d82a1fd91deb3fd"
+    },
+    {
+      "path": "assets/img/megadrum-audio-center.webp",
+      "bytes": 101084,
+      "sha256": "1ed0672708483cf9f4c5ebfc119fe3f2965e5ea383fe516c73ea11c1a9dadb05"
+    },
+    {
+      "path": "assets/img/megadrum-ios.png",
+      "bytes": 1389237,
+      "sha256": "d26f46fe2b72bbb53c17782b503a50d89f5153ab2f62f36cbe1b0f0107ce65b3"
+    },
+    {
+      "path": "assets/img/megadrum-kit-center.webp",
+      "bytes": 91632,
+      "sha256": "52fe0e32a8fe077a672f4e3dd4ff261ab4258d285cd0e87a60a64696498fa30f"
+    },
+    {
+      "path": "assets/img/megadrum-production.png",
+      "bytes": 304036,
+      "sha256": "b66e94034c9e26d2b387ecd917e8dd720f49b0551efd87b9c411f8579f7d9d7d"
+    },
+    {
+      "path": "assets/img/megadrum-showcase.webp",
+      "bytes": 122760,
+      "sha256": "9f30c21a1c163f3ea96ee3ab81b22f973e50950ff77810ba07bae7d1f4d45b8c"
+    },
+    {
+      "path": "assets/img/megadrum.png",
+      "bytes": 175404,
+      "sha256": "6c8d2d6852dc84a125e94843b19af8702422f9a96a36f477b7e8ec2a22c05358"
+    },
+    {
+      "path": "assets/img/new-mega-drum.png",
+      "bytes": 298534,
+      "sha256": "6a01e6b1825202652807b852064f7cc458132385b166d1c32282c231a9d65c09"
+    },
+    {
+      "path": "assets/img/percussion.png",
+      "bytes": 342495,
+      "sha256": "0c7ec3d5547a8a864d90b093b6ba239c6e8e96e4b07b789c022af58660c0be90"
+    },
+    {
+      "path": "assets/img/play-gallery/kit-1.webp",
+      "bytes": 62966,
+      "sha256": "2a597c060560d2d2c2c6a2ff8a2715aac34fb093f7cd68b717b411132d621d3d"
+    },
+    {
+      "path": "assets/img/play-gallery/kit-2.webp",
+      "bytes": 80318,
+      "sha256": "5e5cde143eb04f70e5407fd05ce4512b2109f6dd1e4458bb0aa15904016afb3a"
+    },
+    {
+      "path": "assets/img/play-gallery/kit-3.webp",
+      "bytes": 151018,
+      "sha256": "f24d8825e896e683fd95d54940dde9ebe014e12c0c499dce142cec5b016065a2"
+    },
+    {
+      "path": "assets/img/play-gallery/kit-4.webp",
+      "bytes": 64852,
+      "sha256": "eb958bf14625b7f72b0af54488fb8295319663030986cf137b3447921151be9f"
+    },
+    {
+      "path": "assets/img/play-gallery/kit-5.webp",
+      "bytes": 67802,
+      "sha256": "10e340537089fc8a02e4e38c984b1705110bc24dba986855c740bc9bec9ffa86"
+    },
+    {
+      "path": "assets/img/play-gallery/kit-6.webp",
+      "bytes": 59746,
+      "sha256": "6bdbdd473855dcb110eeb72f17fce9d7399a116f19dde34edf17bbe136ac11e2"
+    },
+    {
+      "path": "assets/img/play-gallery/kit-7.webp",
+      "bytes": 52412,
+      "sha256": "056dbaa167fb947854eacde73d5450eba809fba019556bf81b56ab2ffe147af4"
+    },
+    {
+      "path": "assets/img/play-gallery/kit-8.webp",
+      "bytes": 75066,
+      "sha256": "d4c23fbed2c826aea639161389b0c440662bf8fcd1830c011513236dcd18efe5"
+    },
+    {
+      "path": "assets/img/store/app-store-en.svg",
+      "bytes": 10804,
+      "sha256": "a26fc5b38380272c92e9019a2eb8b45542a66814b3e2b203772db8904b9fb99f"
+    },
+    {
+      "path": "assets/img/store/google-play-en.png",
+      "bytes": 4904,
+      "sha256": "f72611e2df8e88204009fd896d05d5e8e83c77009c63943bbffa169559934849"
+    },
+    {
+      "path": "assets/img/store/google-play-pt-br.png",
+      "bytes": 17728,
+      "sha256": "e1ad5e03f636d94b05448c1f156e39b012b9e1d772b730d9e27d066695531a6b"
+    },
+    {
+      "path": "assets/js/i18n.js",
+      "bytes": 12207,
+      "sha256": "36a5e178893de8496f4fdefcf5855f4c3bcfb1dd162340cc98663d2eb66c6cb4"
+    },
+    {
+      "path": "assets/logo.png",
+      "bytes": 5461,
+      "sha256": "4d737f92b8430c4ac32661343214faa90f9b5212c466aec17a816253c84b8941"
+    },
+    {
+      "path": "loops-drumless/Abstract Heart/img.jpg",
+      "bytes": 49351,
+      "sha256": "fd11f4e4fb6b0fe25b69a8018a4c39ec73ba699fabfd39eae827e17034c80658"
+    },
+    {
+      "path": "loops-drumless/Abstract Heart/sound.mp3",
+      "bytes": 285301,
+      "sha256": "3441a56ae66678fe4c91a4a71a68a1880c1e04795308e624e72687d4837dee97"
+    },
+    {
+      "path": "loops-drumless/DIA_LIB_70_melodic_stack_full_spanishtown_Gmin/img.jpg",
+      "bytes": 62534,
+      "sha256": "ccb870c4122957ff50e6ef17672b1852697326c3742ca68a42939e2545a41728"
+    },
+    {
+      "path": "loops-drumless/DIA_LIB_70_melodic_stack_full_spanishtown_Gmin/sound.mp3",
+      "bytes": 439783,
+      "sha256": "7f49d4d6be1808c2b11a534ce9fb8e1d72e426ce906ae138a4d2e53b5dfd9338"
+    },
+    {
+      "path": "loops-drumless/DSC_EDB_115_electric_bass_loop_commodore_Dmin/img.jpg",
+      "bytes": 52887,
+      "sha256": "f530fbc659b922f016f8becaa15793e6d7a09d21e828e758aa946c6a87687744"
+    },
+    {
+      "path": "loops-drumless/DSC_EDB_115_electric_bass_loop_commodore_Dmin/sound.mp3",
+      "bytes": 134182,
+      "sha256": "a3371f1bc2ca0df8ee37ebc3b183e9fb4afed1bf0af60dc6a66b6cb907e69156"
+    },
+    {
+      "path": "loops-drumless/DSC_EDB_115_electric_bass_loop_simple_Dmin/img.jpg",
+      "bytes": 43750,
+      "sha256": "b5ea0cb15d6d8ac44daf3dd82878f4bc5e9057fc6721278811a1d181820410b5"
+    },
+    {
+      "path": "loops-drumless/DSC_EDB_115_electric_bass_loop_simple_Dmin/sound.mp3",
+      "bytes": 134182,
+      "sha256": "a1a1ee15496920f30c8924d5f3ac7748c9d7cb15251527bd145a840a36507f5e"
+    },
+    {
+      "path": "loops-drumless/Laidback Miracle/img.jpg",
+      "bytes": 47515,
+      "sha256": "2aef9adc3f3d755ae37cad9e5033ec77ad9579983ef637d8122bb5a9e2fac38b"
+    },
+    {
+      "path": "loops-drumless/Laidback Miracle/sound.mp3",
+      "bytes": 327515,
+      "sha256": "66ebbd9fbd72093eb6f3b5f24dc44304e2e6219170bd90bea9834ab4aea04a30"
+    },
+    {
+      "path": "loops-drumless/Mystic Sugar/img.jpg",
+      "bytes": 52423,
+      "sha256": "99a77952dd08a694a71318fa058b321d73c69e620dc8dc33fe9c10574ce1359e"
+    },
+    {
+      "path": "loops-drumless/Mystic Sugar/sound.mp3",
+      "bytes": 410270,
+      "sha256": "9ce4de6ec0800211bcc05b3fbd87b06eb3715a2558b9456ac8d9eeb6ceb6da92"
+    },
+    {
+      "path": "loops-drumless/OS_VV2_80_electric_piano_chords_money/img.jpg",
+      "bytes": 31525,
+      "sha256": "99e6798d656645301f338bb13c34bdb952d3462fdca957a47091e82e1cfd6244"
+    },
+    {
+      "path": "loops-drumless/OS_VV2_80_electric_piano_chords_money/sound.mp3",
+      "bytes": 384955,
+      "sha256": "0d63e6c69fa4e91c9f102a41e655dc0a3bf6ad566d3892168ed06a6371404271"
+    },
+    {
+      "path": "loops-drumless/Occasionally Often Bloom/img.jpg",
+      "bytes": 47632,
+      "sha256": "de7188d9b4cad07adcffdf73ec498f55b517ec8a2aec5be53220084514488c16"
+    },
+    {
+      "path": "loops-drumless/Occasionally Often Bloom/sound.mp3",
+      "bytes": 205470,
+      "sha256": "04507227a5e3b001287b5d7ea868d599eec5e7dd1b5103e8294409e58dc57146"
+    },
+    {
+      "path": "loops-drumless/Planet Things/img.jpg",
+      "bytes": 63624,
+      "sha256": "6cc5deb5a5178ad8d72900dcdac2a3b4b82330eba44795d4f2acc5f626f72dde"
+    },
+    {
+      "path": "loops-drumless/Planet Things/sound.mp3",
+      "bytes": 410270,
+      "sha256": "17611417cc5e5c45c436917230a0a1679e85248578434a1b3670f8d6e4843b10"
+    },
+    {
+      "path": "loops-drumless/RMG_rnbguitar_90BPM_Cminor_2_/img.jpg",
+      "bytes": 90137,
+      "sha256": "99e9020f6068c344b181ab30ecdc0d911ff0e444c5536c6a94118be8d52d67bb"
+    },
+    {
+      "path": "loops-drumless/RMG_rnbguitar_90BPM_Cminor_2_/sound.mp3",
+      "bytes": 342052,
+      "sha256": "130d5fa1206e8e309591095ec350c804a7d32d0cf5850d13e7af8795259a7ab0"
+    },
+    {
+      "path": "loops-drumless/Rhythmic No/img.jpg",
+      "bytes": 57668,
+      "sha256": "2260d8a2d23b047b28e74a5f175565d5920f96bcbbef4c5a1cd2ab801af79c62"
+    },
+    {
+      "path": "loops-drumless/Rhythmic No/sound.mp3",
+      "bytes": 324171,
+      "sha256": "fa85dc9b50a145c1fc4992819310d7aa524e26148124cd91cadf8bc3909f2114"
+    },
+    {
+      "path": "loops-drumless/Rock/img.jpg",
+      "bytes": 60638,
+      "sha256": "7d36ab4b4d9a19406fc1044e022eb31bf87edc9dc744e9b074095caee97ced34"
+    },
+    {
+      "path": "loops-drumless/Rock/sound.mp3",
+      "bytes": 246848,
+      "sha256": "10ce7a5f8eafdae5a8f34f17ed59995026600353c202baaf36255f4ec57f15d0"
+    },
+    {
+      "path": "loops-drumless/SC_NG_150_guitar_nylon_ensemble_arrangement_chasing_full_Cmin/img.jpg",
+      "bytes": 52708,
+      "sha256": "69b79ba142be91148bd23f53788704b9c3eab79840499b8d252aa039269216ac"
+    },
+    {
+      "path": "loops-drumless/SC_NG_150_guitar_nylon_ensemble_arrangement_chasing_full_Cmin/sound.mp3",
+      "bytes": 205601,
+      "sha256": "dfe8bf320bb1f5f5b5122dc1ecefc8059adeb1a9882b06a258d4853b633a4140"
+    },
+    {
+      "path": "loops-drumless/SC_NG_80_guitar_nylon_ensemble_arrangement_presqueisle_full_Gbmaj/img.jpg",
+      "bytes": 52708,
+      "sha256": "c7030a9e58a7ddd398043180b3b0a8f724280a8ab67a0e91507e25565f96c37a"
+    },
+    {
+      "path": "loops-drumless/SC_NG_80_guitar_nylon_ensemble_arrangement_presqueisle_full_Gbmaj/sound.mp3",
+      "bytes": 432971,
+      "sha256": "7df82c47b84b1337f23d444037fdddb61db2a7c3962ffa838ce2ab7ef3a3beb3"
+    },
+    {
+      "path": "loops-drumless/SD_CW_140_piano_chords_gospel_path_Dmin/img.jpg",
+      "bytes": 38240,
+      "sha256": "6882b3fd686e8fdc44ed26656b41de74e7ff9e76ffea9cd740a788fd8e7a46b4"
+    },
+    {
+      "path": "loops-drumless/SD_CW_140_piano_chords_gospel_path_Dmin/sound.mp3",
+      "bytes": 220353,
+      "sha256": "346f73fab37ad67ce9f9339783cb1f4ebafd97e23702db3c9323a6deac9eb02a"
+    },
+    {
+      "path": "loops-drumless/SK_guitar_loop_clean_aspect_128_D/img.jpg",
+      "bytes": 36832,
+      "sha256": "701353b64d9279f78d16b173e1063ed6e8b777ae9e47f7bef4bfa8696de79036"
+    },
+    {
+      "path": "loops-drumless/SK_guitar_loop_clean_aspect_128_D/sound.mp3",
+      "bytes": 121061,
+      "sha256": "275bed775a647e4ef450981abbaea93f3b83c681f96c7fb89a2e35123e560d48"
+    },
+    {
+      "path": "loops-drumless/SO_VS_137_melodic_stack_lastlight_full_soul_Cmin/img.jpg",
+      "bytes": 41172,
+      "sha256": "773539720896f1e781154b51aa9518cdcd3b091eae89db01e4f349da1f64883e"
+    },
+    {
+      "path": "loops-drumless/SO_VS_137_melodic_stack_lastlight_full_soul_Cmin/sound.mp3",
+      "bytes": 225251,
+      "sha256": "e36b52f3dbf8c809d87ec758bdd94663808d4966b6129d0a3f2c23b3763e134a"
+    },
+    {
+      "path": "loops-drumless/SO_VS_85_melodic_stack_notread_full_blues_12_bars_Fmin/img.jpg",
+      "bytes": 41172,
+      "sha256": "773539720896f1e781154b51aa9518cdcd3b091eae89db01e4f349da1f64883e"
+    },
+    {
+      "path": "loops-drumless/SO_VS_85_melodic_stack_notread_full_blues_12_bars_Fmin/sound.mp3",
+      "bytes": 543318,
+      "sha256": "565cfbf3843d72aaf81a53362117aae6e41c6bec707d3355a98a52fa72dd66c4"
+    },
+    {
+      "path": "loops-drumless/SP_MN_122_guitar_electric_clean_chords_clean_soul_Emaj/img.jpg",
+      "bytes": 42283,
+      "sha256": "3e92cae7a9e4659a6eaf5ce491012cafcc89a96a22a6b25b8eb8686aedc99872"
+    },
+    {
+      "path": "loops-drumless/SP_MN_122_guitar_electric_clean_chords_clean_soul_Emaj/sound.mp3",
+      "bytes": 252816,
+      "sha256": "e95ad32693c95e78ec7d06826a728df188371b15f3a2dab8db94fea7a3ed3086"
+    },
+    {
+      "path": "loops-drumless/SP_MN_122_guitar_electric_clean_chords_palm_mutes_Emaj/img.jpg",
+      "bytes": 42283,
+      "sha256": "f82b4e4ae37094feea052f04b332e8c6289e1f3c08508d6bc54861516db643ce"
+    },
+    {
+      "path": "loops-drumless/SP_MN_122_guitar_electric_clean_chords_palm_mutes_Emaj/sound.mp3",
+      "bytes": 252816,
+      "sha256": "26e6709bbebcb3275c41dda0e3e870a31a37e8259915edc9b6b97e1faebec0b1"
+    },
+    {
+      "path": "loops-drumless/SS_IR_65_songstarter_rhythm_badboy_Amin/img.jpg",
+      "bytes": 72549,
+      "sha256": "96b2fc63fa8c2d78ad9c9488eb5efdec66e5b5ba0f1847d7077a726984da2131"
+    },
+    {
+      "path": "loops-drumless/SS_IR_65_songstarter_rhythm_badboy_Amin/sound.mp3",
+      "bytes": 473503,
+      "sha256": "fcb1c233d9602530ca88cf81369f7778cf530e618471d3a77a3a20b2af05a1bb"
+    },
+    {
+      "path": "loops-drumless/SS_IR_85_songstarter_skanks_rizzla_Cmin/img.jpg",
+      "bytes": 62213,
+      "sha256": "8fbbfd3afa175ff73fd6dd76a80e84fe2c43190e6a1c73eec7d48d9841b83410"
+    },
+    {
+      "path": "loops-drumless/SS_IR_85_songstarter_skanks_rizzla_Cmin/sound.mp3",
+      "bytes": 362326,
+      "sha256": "dbee4d72ed79de7e5df8eee6b28db3f9a45daadaecea51b92922f9d6a958d09a"
+    },
+    {
+      "path": "loops-drumless/Smart Like Year/img.jpg",
+      "bytes": 64221,
+      "sha256": "5228fd09b1b79eb26b7477101dea64087cb9025290716f8c7934bf2c84735dee"
+    },
+    {
+      "path": "loops-drumless/Smart Like Year/sound.mp3",
+      "bytes": 410270,
+      "sha256": "97c223f2b5553f0a872c1e5aa2c0506c83aa347739f4ec1cbf84eae3415676c8"
+    },
+    {
+      "path": "loops-drumless/Spacey Groove/img.jpg",
+      "bytes": 30684,
+      "sha256": "52e93d349b4b89006430f7df744b7296e2fb55dc691c9e567d7ace55c82d82bf"
+    },
+    {
+      "path": "loops-drumless/Spacey Groove/sound.mp3",
+      "bytes": 154479,
+      "sha256": "ac34f8c7462ed17fbd4aa9fd035d47bdd901650d505f794c8bbdeabb9eeb1790"
+    },
+    {
+      "path": "loops-drumless/Zanzibar/img.jpg",
+      "bytes": 99151,
+      "sha256": "d24589df6350bd939c479e40a96b3fc06089b76466e262b4773c29686f4550d9"
+    },
+    {
+      "path": "loops-drumless/Zanzibar/sound.mp3",
+      "bytes": 403515,
+      "sha256": "f983d41a6682704752de16e6e75aa5cdf6bb44b43c3071b35b2e9e9a19aa7731"
+    },
+    {
+      "path": "loops-drumless/index.json",
+      "bytes": 2134,
+      "sha256": "feae9e0559877bf2fc392bdbc748cb118d665a0644a6733d99554d9f47dd13b2"
+    },
+    {
+      "path": "loops-drumless/script.sh",
+      "bytes": 895,
+      "sha256": "89948627a7152acdc00c62aed21605804067473bf3c8c996fea78729f136da51"
+    }
+  ]
+}
