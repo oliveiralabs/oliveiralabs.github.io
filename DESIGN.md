@@ -1,47 +1,51 @@
 # Oliveira Labs — direção de design
 
-## Objetivo
+## Conceito
 
-Apresentar a Oliveira Labs como um estúdio independente de aplicativos musicais. A página inicial deve permitir reconhecer o portfólio inteiro rapidamente; cada página de produto deve explicar o uso do aplicativo e levar à loja, suporte e política corretos.
+Um laboratório de produtos digitais: claro, preciso e curioso. A identidade parte da logo oficial — círculo azul e béquer — para apresentar a Oliveira Labs como um estúdio capaz de criar aplicativos, sistemas e novas categorias de produto.
 
 ## Sistema visual
 
-- **Noite** `#17213A`: marca, títulos e superfícies de contraste.
-- **Porcelana** `#F4F7F8`: fundo principal frio e luminoso.
-- **Névoa** `#DDE5E8`: linhas, divisões e superfícies secundárias.
-- **Azul de sinal** `#3457D5`: links, foco e ações.
-- **Amarelo de pulso** `#F5C84B`: playhead e pequenos pontos de atenção.
-- **Grafite** `#202733`: texto corrente.
+- **Lab Blue** `#5FADE8`: identidade, ilustrações técnicas e superfícies de laboratório.
+- **Deep Blue** `#1267B1`: ações, links e seções de credibilidade.
+- **Ice** `#EAF6FF`: planos de fundo e agrupamentos de conteúdo.
+- **Cloud** `#F5F9FC`: cartões e superfícies neutras.
+- **White** `#FFFFFF`: base clara e espaço visual.
+- **Ink** `#162538`: títulos e texto de alto contraste.
 
-Tipografia: Bricolage Grotesque para títulos e marca; IBM Plex Sans para leitura e interface. Ambas são servidas pelo próprio site. Números e metadados usam IBM Plex Mono do sistema como fallback funcional.
+Tipografia: Manrope variável, usada em toda a interface. A família tem formas modernas e familiares, boa leitura em tamanhos pequenos e peso suficiente para os títulos sem parecer experimental.
 
-## Estrutura
+## Estrutura da página inicial
 
 ```text
-[marca]                              [Aplicativos] [Sobre] [Suporte]
-------------------------------------------------------------------
-Oliveira Labs constrói               pauta interativa do portfólio
-instrumentos digitais.               ┃ ícone  Mega Drum
-                                     ┃ ícone  Mega Bass
-                                     ┃ ...
-------------------------------------------------------------------
-Portfólio completo
-01  [ícone]  Mega Drum       resumo, plataformas, abrir produto
-02  [ícone]  Mega Bass       resumo, plataformas, abrir produto
-...
-------------------------------------------------------------------
-Como trabalhamos                     contato e suporte
-------------------------------------------------------------------
-[rodapé institucional e documentos]
-```
+[logo + nome]                 [Produtos] [Serviços] [Sobre] [Idioma] [Projeto]
 
-As páginas de aplicativo reutilizam a mesma linguagem: ícone e proposta em destaque, links de loja imediatamente visíveis, recursos em linhas numeradas e links específicos de suporte/privacidade.
+[proposta ampla da empresa]            [laboratório visual]
+[texto objetivo]                       [logo + produtos reais em órbita]
+[produtos] [conversar sobre projeto]
+
+[evidências reais: downloads / plataformas / processo]
+
+[portfólio completo em cartões de produto]
+
+[serviços de desenvolvimento + capacidades]
+
+[case Mega Drum: imagem real + alcance]
+
+[sobre o estúdio e conceito de laboratório]
+
+[contato para novo projeto]
+```
 
 ## Princípios
 
-1. **Produto antes de decoração:** imagens reais dos aplicativos, sem ilustrações genéricas ou depoimentos inventados.
-2. **Uma assinatura memorável:** a pauta com playhead conecta os aplicativos; o restante é contido.
-3. **Sem kit de cards:** o portfólio é uma lista editorial contínua, com hierarquia e ritmo próprios.
-4. **Clareza institucional:** textos objetivos, status explícito e caminhos diretos para lojas e suporte.
-5. **Acessível e leve:** navegação por teclado, foco visível, contraste alto, movimento opcional e HTML estático.
+1. **Leveza antes de espetáculo:** fundo branco, tipografia convencional e hierarquia direta.
+2. **Laboratório como sistema:** grades, órbitas, bolhas e traços técnicos têm relação com a marca, não são decoração genérica.
+3. **Produtos reais:** ícones, interfaces, plataformas e números verificáveis substituem mockups e depoimentos fictícios.
+4. **Empresa aberta ao futuro:** a comunicação não restringe a Oliveira Labs a música; o portfólio atual é apresentado como experiência, não como limite.
+5. **Dois públicos, uma narrativa:** visitantes conhecem os produtos; potenciais clientes encontram serviços, processo e contato.
+6. **Internacionalização estrutural:** inglês na raiz, português em `/pt/` e conteúdo centralizado para inclusão futura de novos idiomas.
 
+## Referência
+
+O template Tasky orientou a leveza, os espaços amplos, a composição em duas colunas e a clareza dos cartões. Não foram reproduzidos seus elementos de marca, telas fictícias, depoimentos, preços ou estrutura comercial.

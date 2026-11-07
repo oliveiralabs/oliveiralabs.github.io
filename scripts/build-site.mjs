@@ -2,286 +2,243 @@ import { copyFile, cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { apps } from "../site/data/apps.mjs";
+import { copy, locales } from "../site/data/i18n.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const output = path.join(root, "dist");
 const siteUrl = "https://oliveiralabs.github.io";
 const contactEmail = "antonio.filho128@gmail.com";
 
-function escapeHtml(value = "") {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
+const escapeHtml = (value = "") => String(value)
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll('"', "&quot;")
+  .replaceAll("'", "&#039;");
 
-function jsonLd(data) {
-  return `<script type="application/ld+json">${JSON.stringify(data).replaceAll("<", "\\u003c")}</script>`;
-}
+const jsonLd = (data) => `<script type="application/ld+json">${JSON.stringify(data).replaceAll("<", "\\u003c")}</script>`;
+const route = (locale, pathname = "/") => `${locales[locale].prefix}${pathname}` || "/";
+const absolute = (pathname) => `${siteUrl}${pathname}`;
+const contentFor = (app, locale) => app.content[locale];
+const projectMail = (locale) => `mailto:${contactEmail}?subject=${encodeURIComponent(locale === "pt" ? "Novo projeto — Oliveira Labs" : "New project — Oliveira Labs")}`;
 
-function header() {
+function header(locale, alternatePath) {
+  const t = copy[locale];
+  const home = route(locale, "/");
   return `
-    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <a class="skip-link" href="#content">${locale === "pt" ? "Ir para o conteúdo" : "Skip to content"}</a>
     <header class="site-header" data-header>
       <div class="shell header-inner">
-        <a class="brand" href="/" aria-label="Oliveira Labs — início" translate="no">
-          <span class="brand-mark" aria-hidden="true"><span>O</span><span>L</span></span>
-          <span class="brand-name">Oliveira Labs</span>
+        <a class="brand" href="${home}" aria-label="Oliveira Labs — ${locale === "pt" ? "início" : "home"}" translate="no">
+          <img src="/site-assets/brand/oliveira-labs.png" width="52" height="52" alt="">
+          <span>Oliveira Labs</span>
         </a>
         <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-navigation" data-menu-button>
-          <span>Menu</span><span class="menu-lines" aria-hidden="true"></span>
+          <span>${locale === "pt" ? "Menu" : "Menu"}</span><span class="menu-icon" aria-hidden="true"></span>
         </button>
-        <nav class="site-nav" id="site-navigation" aria-label="Navegação principal" data-navigation>
-          <a href="/apps/">Aplicativos</a>
-          <a href="/sobre/">Sobre</a>
-          <a href="/suporte/">Suporte</a>
+        <nav class="site-nav" id="site-navigation" aria-label="${locale === "pt" ? "Navegação principal" : "Main navigation"}" data-navigation>
+          <a href="${route(locale, "/apps/")}">${t.nav.products}</a>
+          <a href="${route(locale, "/services/")}">${t.nav.services}</a>
+          <a href="${route(locale, "/about/")}">${t.nav.about}</a>
+          <a href="${route(locale, "/support/")}">${t.nav.support}</a>
+          <span class="nav-divider" aria-hidden="true"></span>
+          <a class="language-link" href="${alternatePath}" hreflang="${locales[locales[locale].other].html}" lang="${locales[locales[locale].other].html}">${locales[locales[locale].other].short}</a>
+          <a class="nav-cta" href="${projectMail(locale)}">${t.nav.project}</a>
         </nav>
       </div>
     </header>`;
 }
 
-function footer() {
+function footer(locale) {
+  const t = copy[locale];
   return `
     <footer class="site-footer">
-      <div class="shell footer-main">
-        <div>
-          <a class="brand brand-footer" href="/" aria-label="Oliveira Labs — início" translate="no">
-            <span class="brand-mark" aria-hidden="true"><span>O</span><span>L</span></span>
-            <span class="brand-name">Oliveira Labs</span>
-          </a>
-          <p>Aplicativos musicais independentes para tocar, praticar e criar.</p>
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="${route(locale, "/")}" translate="no"><img src="/site-assets/brand/oliveira-labs.png" width="64" height="64" alt=""><span>Oliveira Labs</span></a>
+          <p>${t.footer.line}</p>
         </div>
-        <div class="footer-links">
-          <div><strong>Explorar</strong><a href="/apps/">Todos os aplicativos</a><a href="/sobre/">Sobre o estúdio</a></div>
-          <div><strong>Contato</strong><a href="/suporte/">Central de suporte</a><a href="mailto:${contactEmail}">${contactEmail}</a></div>
-          <div><strong>Documentos</strong><a href="/privacy-policy.html">Privacidade</a><a href="/app-ads.txt">App-ads.txt</a></div>
-        </div>
+        <div class="footer-column"><strong>${t.footer.explore}</strong><a href="${route(locale, "/apps/")}">${t.nav.products}</a><a href="${route(locale, "/services/")}">${t.nav.services}</a><a href="${route(locale, "/about/")}">${t.nav.about}</a></div>
+        <div class="footer-column"><strong>${t.footer.contact}</strong><a href="${route(locale, "/support/")}">${t.nav.support}</a><a href="${projectMail(locale)}">${t.nav.project}</a><a href="mailto:${contactEmail}">${contactEmail}</a></div>
+        <div class="footer-column"><strong>${t.footer.documents}</strong><a href="/privacy-policy.html">${t.footer.privacy}</a><a href="/app-ads.txt">App-ads.txt</a></div>
       </div>
-      <div class="shell footer-bottom"><span>© 2026 Oliveira Labs</span><span>Montes Claros, Brasil</span></div>
+      <div class="shell footer-bottom"><span>© 2026 Oliveira Labs</span><span>${t.footer.location}</span></div>
     </footer>`;
 }
 
-function page({ title, description, pathname, content, bodyClass = "", structuredData = "" }) {
-  const canonical = `${siteUrl}${pathname}`;
+function page({ locale, title, description, pathname, alternatePath, content, bodyClass = "", structuredData = "" }) {
+  const currentPath = route(locale, pathname);
+  const canonical = absolute(currentPath);
+  const englishPath = locale === "en" ? currentPath : alternatePath;
+  const portuguesePath = locale === "pt" ? currentPath : alternatePath;
   return `<!doctype html>
-<html lang="pt-BR">
+<html lang="${locales[locale].html}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>${escapeHtml(title)}</title>
     <meta name="description" content="${escapeHtml(description)}">
-    <meta name="theme-color" content="#17213A">
+    <meta name="theme-color" content="#FFFFFF">
     <meta name="color-scheme" content="light">
     <link rel="canonical" href="${canonical}">
-    <link rel="icon" href="/site-assets/favicon.svg" type="image/svg+xml">
+    <link rel="alternate" hreflang="en" href="${absolute(englishPath)}">
+    <link rel="alternate" hreflang="pt-BR" href="${absolute(portuguesePath)}">
+    <link rel="alternate" hreflang="x-default" href="${absolute(englishPath)}">
+    <link rel="icon" href="/site-assets/brand/oliveira-labs.png" type="image/png">
     <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="preload" href="/site-assets/fonts/bricolage-grotesque.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="/site-assets/fonts/ibm-plex-sans.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/site-assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="/site-assets/styles.css">
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="pt_BR">
+    <meta property="og:locale" content="${locale === "pt" ? "pt_BR" : "en_US"}">
     <meta property="og:site_name" content="Oliveira Labs">
     <meta property="og:title" content="${escapeHtml(title)}">
     <meta property="og:description" content="${escapeHtml(description)}">
     <meta property="og:url" content="${canonical}">
+    <meta property="og:image" content="${siteUrl}/site-assets/brand/oliveira-labs.png">
     <meta name="twitter:card" content="summary">
     ${structuredData}
     <script src="/site-assets/site.js" defer></script>
   </head>
   <body class="${escapeHtml(bodyClass)}">
-    ${header()}
-    <main id="conteudo">${content}</main>
-    ${footer()}
+    ${header(locale, alternatePath)}
+    <main id="content">${content}</main>
+    ${footer(locale)}
   </body>
 </html>`;
 }
 
-function platformList(app) {
-  return app.platforms.map((platform) => `<span>${escapeHtml(platform)}</span>`).join("");
+function sectionHeading(kicker, title, text = "", align = "left") {
+  return `<div class="section-heading section-heading-${align}"><p class="kicker"><span aria-hidden="true"></span>${escapeHtml(kicker)}</p><h2>${escapeHtml(title)}</h2>${text ? `<p>${escapeHtml(text)}</p>` : ""}</div>`;
 }
 
-function appLink(app, label = "Conhecer o aplicativo") {
-  return `<a class="text-link" href="/apps/${app.slug}/"><span>${escapeHtml(label)}</span><span aria-hidden="true">↗</span></a>`;
+function platformList(app, locale) {
+  return `<div class="platform-list" aria-label="${locale === "pt" ? "Plataformas" : "Platforms"}">${app.platforms.map((platform) => `<span>${escapeHtml(platform)}</span>`).join("")}</div>`;
 }
 
-function score(app, index) {
-  return `<a class="score-track" href="/apps/${app.slug}/" style="--track:${index};--app-accent:${app.accent}" data-score-track>
-    <span class="score-number">${app.order}</span>
-    <span class="score-icon-wrap"><img src="${app.icon}" width="62" height="62" alt="" loading="${index > 2 ? "lazy" : "eager"}"></span>
-    <span class="score-label"><strong>${escapeHtml(app.name)}</strong><small>${escapeHtml(app.category)}</small></span>
-  </a>`;
-}
-
-function portfolioRow(app) {
-  return `<article class="portfolio-row" style="--app-accent:${app.accent}">
-    <div class="portfolio-number">${app.order}</div>
-    <a class="portfolio-icon" href="/apps/${app.slug}/" aria-label="${escapeHtml(app.name)}"><img src="${app.icon}" width="144" height="144" alt="Ícone do ${escapeHtml(app.name)}" loading="lazy"></a>
-    <div class="portfolio-copy">
-      <p>${escapeHtml(app.category)}</p>
-      <h3><a href="/apps/${app.slug}/">${escapeHtml(app.name)}</a></h3>
-      <div class="platform-list" aria-label="Plataformas">${platformList(app)}</div>
-    </div>
-    <p class="portfolio-description">${escapeHtml(app.lead)}</p>
-    <div class="portfolio-action">${appLink(app)}</div>
+function productCard(app, locale, size = "standard") {
+  const item = contentFor(app, locale);
+  const t = copy[locale].products;
+  return `<article class="product-card product-card-${size}" style="--app-color:${app.accent}">
+    <div class="product-card-top"><img src="${app.icon}" width="112" height="112" alt="${escapeHtml(item.name)} icon" loading="lazy"><div>${app.status ? `<span class="status-pill">${t.coming}</span>` : platformList(app, locale)}</div></div>
+    <div class="product-card-copy"><p>${escapeHtml(item.category)}</p><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.lead)}</p></div>
+    <a class="card-link" href="${route(locale, `/apps/${app.slug}/`)}"><span>${t.open}</span><span class="link-disc" aria-hidden="true">↗</span></a>
   </article>`;
 }
 
-function homePage() {
-  const description = "Oliveira Labs cria aplicativos musicais para tocar, praticar e criar. Conheça Mega Drum, Mega Bass, Mega Piano, Pads Worship, Percussão Virtual e BackJam.";
-  const content = `
-    <section class="hero section-dark">
-      <div class="shell hero-grid">
-        <div class="hero-copy">
-          <p class="context-line"><span></span>Estúdio independente de aplicativos musicais</p>
-          <h1>Instrumentos digitais para ideias que pedem som.</h1>
-          <p class="hero-lead">Criamos experiências musicais diretas e acessíveis — do primeiro toque à prática diária, do ensaio à gravação.</p>
-          <a class="button button-light" href="#portfolio">Explorar o portfólio</a>
-        </div>
-        <div class="score" data-score>
-          <div class="score-head"><span>Portfólio / 06 aplicativos</span><span aria-live="polite" data-score-status>Selecione uma faixa</span></div>
-          <div class="score-field">
-            <span class="playhead" aria-hidden="true" data-playhead></span>
-            ${apps.map(score).join("")}
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="portfolio-section" id="portfolio" aria-labelledby="portfolio-title">
-      <div class="shell section-intro">
-        <p class="section-index">01 / Portfólio</p>
-        <div><h2 id="portfolio-title">Seis formas de fazer música caber no dia.</h2><p>Cada aplicativo resolve um momento diferente: tocar, aprender, acompanhar, experimentar ou registrar.</p></div>
-      </div>
-      <div class="shell portfolio-list">${apps.map(portfolioRow).join("")}</div>
-    </section>
-    <section class="studio-section">
-      <div class="shell studio-grid">
-        <p class="section-index">02 / Oliveira Labs</p>
-        <div class="studio-statement"><h2>Pequeno por escolha.<br>Próximo de quem toca.</h2><p>A Oliveira Labs é um estúdio independente de Montes Claros, Minas Gerais. Desenvolvemos e mantemos cada produto com atenção à resposta do instrumento, à clareza da interface e ao uso real no celular.</p><a class="text-link" href="/sobre/"><span>Conheça o estúdio</span><span aria-hidden="true">↗</span></a></div>
-        <div class="principles" aria-label="Princípios do estúdio"><div><span>01</span><strong>Resposta rápida</strong><p>Interações pensadas para acompanhar o gesto musical.</p></div><div><span>02</span><strong>Aprendizado aberto</strong><p>Ferramentas úteis tanto no primeiro contato quanto na rotina de prática.</p></div><div><span>03</span><strong>Evolução contínua</strong><p>Produtos vivos, construídos com retornos de quem usa.</p></div></div>
-      </div>
-    </section>
-    <section class="support-band"><div class="shell"><p>Precisa de ajuda com algum aplicativo?</p><a class="button button-dark" href="/suporte/">Ir para o suporte</a></div></section>`;
-  return page({
-    title: "Oliveira Labs — Aplicativos musicais",
-    description,
-    pathname: "/",
-    content,
-    bodyClass: "home-page",
-    structuredData: jsonLd({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "Oliveira Labs",
-      url: siteUrl,
-      email: contactEmail,
-      description,
-    }),
-  });
+function labVisual(locale) {
+  const t = copy[locale].hero;
+  return `<div class="lab-visual" aria-label="${escapeHtml(t.visualTitle)}">
+    <img class="lab-pattern" src="/site-assets/lab-pattern.svg" width="760" height="680" alt="">
+    <div class="lab-orbit lab-orbit-one" aria-hidden="true"></div><div class="lab-orbit lab-orbit-two" aria-hidden="true"></div>
+    <div class="lab-core"><span class="bubble bubble-one" aria-hidden="true"></span><span class="bubble bubble-two" aria-hidden="true"></span><img src="/site-assets/brand/oliveira-labs.png" width="256" height="256" alt="Oliveira Labs"></div>
+    <a class="floating-product floating-drum" href="${route(locale, "/apps/mega-drum/")}"><img src="${apps[0].icon}" width="66" height="66" alt=""><span>Mega Drum</span></a>
+    <a class="floating-product floating-bass" href="${route(locale, "/apps/mega-bass/")}"><img src="${apps[1].icon}" width="58" height="58" alt=""><span>Mega Bass</span></a>
+    <a class="floating-product floating-piano" href="${route(locale, "/apps/mega-piano/")}"><img src="${apps[2].icon}" width="54" height="54" alt=""><span>Mega Piano</span></a>
+    <div class="floating-code" aria-hidden="true"><span>&lt;/&gt;</span><strong>${locale === "pt" ? "Aplicativos + sistemas" : "Apps + systems"}</strong></div>
+    <div class="lab-note"><span></span><div><strong>${escapeHtml(t.visualTitle)}</strong><small>${escapeHtml(t.visualText)}</small></div></div>
+  </div>`;
 }
 
-function appsPage() {
-  const content = `
-    <section class="page-hero"><div class="shell"><p class="context-line"><span></span>Portfólio completo</p><h1>Aplicativos feitos para tocar.</h1><p>Instrumentos virtuais, ferramentas de prática e ambientes sonoros desenvolvidos pela Oliveira Labs.</p></div></section>
-    <section class="portfolio-section portfolio-standalone"><div class="shell portfolio-list">${apps.map(portfolioRow).join("")}</div></section>`;
-  return page({
-    title: "Aplicativos — Oliveira Labs",
-    description: "Conheça todos os aplicativos da Oliveira Labs para música, prática e criação.",
-    pathname: "/apps/",
-    content,
-    bodyClass: "portfolio-page",
-  });
+function proofStrip(locale) {
+  return `<section class="proof-strip" aria-label="${locale === "pt" ? "Experiência" : "Experience"}"><div class="shell proof-grid">${copy[locale].proof.map(([value, label]) => `<div><strong>${escapeHtml(value)}</strong><span>${escapeHtml(label)}</span></div>`).join("")}</div></section>`;
 }
 
-function storeButtons(app) {
+function servicesBlock(locale, full = false) {
+  const t = copy[locale].services;
+  return `<section class="services-section ${full ? "services-full" : ""}">
+    <div class="shell">
+      ${sectionHeading(t.kicker, t.title, t.text)}
+      <div class="capability-grid">${t.capabilities.map(([title, text], index) => `<article><span class="capability-icon" aria-hidden="true">${["⌁", "⌘", "{}", "✓"][index]}</span><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></article>`).join("")}</div>
+      <a class="button button-primary" href="${projectMail(locale)}">${t.cta}<span aria-hidden="true">↗</span></a>
+      ${full ? `<div class="process"><h2>${escapeHtml(t.processTitle)}</h2><ol>${t.process.map(([title, text], index) => `<li><span>${String(index + 1).padStart(2, "0")}</span><div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></div></li>`).join("")}</ol></div>` : ""}
+    </div>
+  </section>`;
+}
+
+function finalCta(locale) {
+  const t = copy[locale].finalCta;
+  return `<section class="final-cta"><div class="shell"><img src="/site-assets/brand/oliveira-labs.png" width="108" height="108" alt=""><div><h2>${escapeHtml(t.title)}</h2><p>${escapeHtml(t.text)}</p></div><a class="button button-white" href="${projectMail(locale)}">${escapeHtml(t.button)}<span aria-hidden="true">↗</span></a></div></section>`;
+}
+
+function homePage(locale) {
+  const t = copy[locale];
+  const alternate = route(locales[locale].other, "/");
+  const description = locale === "pt" ? "A Oliveira Labs cria aplicativos, sistemas e produtos digitais e oferece serviços de desenvolvimento para novos projetos." : "Oliveira Labs creates apps, systems and digital products and provides development services for new projects.";
+  const content = `
+    <section class="hero"><div class="shell hero-grid"><div class="hero-copy"><p class="hero-badge"><span aria-hidden="true">⌁</span>${escapeHtml(t.hero.badge)}</p><h1>${escapeHtml(t.hero.title)}</h1><p>${escapeHtml(t.hero.text)}</p><div class="hero-actions"><a class="button button-primary" href="#products">${escapeHtml(t.hero.primary)}</a><a class="button button-secondary" href="${projectMail(locale)}">${escapeHtml(t.hero.secondary)}<span aria-hidden="true">↗</span></a></div></div>${labVisual(locale)}</div></section>
+    ${proofStrip(locale)}
+    <section class="products-section" id="products"><div class="shell">${sectionHeading(t.products.kicker, t.products.title, t.products.text, "center")}<div class="product-grid">${apps.map((app, index) => productCard(app, locale, index < 2 ? "featured" : "standard")).join("")}</div><div class="center-action"><a class="button button-secondary" href="${route(locale, "/apps/")}">${t.products.all}<span aria-hidden="true">↗</span></a></div></div></section>
+    ${servicesBlock(locale)}
+    <section class="case-study"><div class="shell case-grid"><div class="case-media"><img src="/assets/img/megadrum-showcase.webp" width="1847" height="851" alt="Mega Drum interface" loading="lazy"><div class="case-stat"><strong>1M+</strong><span>${escapeHtml(t.caseStudy.stat)}</span></div></div><div class="case-copy"><p class="kicker"><span aria-hidden="true"></span>${escapeHtml(t.caseStudy.kicker)}</p><h2>${escapeHtml(t.caseStudy.title)}</h2><p>${escapeHtml(t.caseStudy.text)}</p><div class="case-detail"><span>Android · iOS · Web</span><span>${escapeHtml(t.caseStudy.secondary)}</span></div><a class="button button-secondary" href="${route(locale, "/apps/mega-drum/")}">${escapeHtml(t.caseStudy.link)}<span aria-hidden="true">↗</span></a></div></div></section>
+    <section class="about-section"><div class="shell about-grid"><div class="about-logo"><img src="/site-assets/brand/oliveira-labs.png" width="260" height="260" alt="Oliveira Labs"></div><div>${sectionHeading(t.about.kicker, t.about.title, t.about.text)}<a class="text-link" href="${route(locale, "/about/")}">${escapeHtml(t.about.link)}<span aria-hidden="true">↗</span></a></div></div></section>
+    ${finalCta(locale)}`;
+  return page({ locale, title: locale === "pt" ? "Oliveira Labs — Aplicativos, sistemas e desenvolvimento" : "Oliveira Labs — Apps, systems and development", description, pathname: "/", alternatePath: alternate, content, bodyClass: "home-page", structuredData: jsonLd({ "@context": "https://schema.org", "@type": "Organization", name: "Oliveira Labs", url: siteUrl, email: contactEmail, description }) });
+}
+
+function pageHero(title, text, locale, visual = true) {
+  return `<section class="page-hero"><div class="shell page-hero-grid"><div><p class="hero-badge"><span aria-hidden="true">⌁</span>Oliveira Labs</p><h1>${escapeHtml(title)}</h1><p>${escapeHtml(text)}</p></div>${visual ? `<div class="page-hero-mark"><img src="/site-assets/brand/oliveira-labs.png" width="260" height="260" alt=""></div>` : ""}</div></section>`;
+}
+
+function portfolioPage(locale) {
+  const t = copy[locale];
+  const content = `${pageHero(t.pages.portfolioHero, t.pages.portfolioText, locale)}<section class="products-section portfolio-page-section"><div class="shell"><div class="product-grid">${apps.map((app) => productCard(app, locale)).join("")}</div></div></section>${finalCta(locale)}`;
+  return page({ locale, title: t.pages.portfolioTitle, description: t.pages.portfolioText, pathname: "/apps/", alternatePath: route(locales[locale].other, "/apps/"), content, bodyClass: "portfolio-page" });
+}
+
+function servicesPage(locale) {
+  const t = copy[locale];
+  const content = `${pageHero(t.pages.servicesHero, t.pages.servicesText, locale)}${proofStrip(locale)}${servicesBlock(locale, true)}${finalCta(locale)}`;
+  return page({ locale, title: t.pages.servicesTitle, description: t.pages.servicesText, pathname: "/services/", alternatePath: route(locales[locale].other, "/services/"), content, bodyClass: "services-page" });
+}
+
+function aboutPage(locale) {
+  const t = copy[locale];
+  const values = locale === "pt" ? [["Produtos próprios", "Experiência prática com produtos publicados e mantidos ao longo do tempo."], ["Visão completa", "Decisões de produto, interface, engenharia e publicação conectadas."], ["Parceria direta", "Comunicação próxima e decisões objetivas durante o projeto."]] : [["Products of our own", "Hands-on experience with products that are published and maintained over time."], ["Complete perspective", "Product, interface, engineering and publishing decisions connected."], ["Direct partnership", "Close communication and clear decisions throughout the project."]];
+  const content = `${pageHero(t.pages.aboutHero, t.pages.aboutText, locale)}<section class="about-detail"><div class="shell"><div class="about-story"><img src="/site-assets/brand/oliveira-labs.png" width="320" height="320" alt="Oliveira Labs"><div><h2>${escapeHtml(t.about.title)}</h2><p>${escapeHtml(t.about.text)}</p><p>${locale === "pt" ? "O conceito de laboratório representa a forma de trabalhar: observar um problema, testar ideias, construir com cuidado e aprender com o uso real." : "The laboratory concept represents how we work: observe a problem, test ideas, build carefully and learn from real use."}</p></div></div><div class="value-grid">${values.map(([title, text]) => `<article><span aria-hidden="true">⌁</span><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></article>`).join("")}</div></div></section>${finalCta(locale)}`;
+  return page({ locale, title: t.pages.aboutTitle, description: t.pages.aboutText, pathname: "/about/", alternatePath: route(locales[locale].other, "/about/"), content, bodyClass: "about-page" });
+}
+
+function supportPage(locale) {
+  const t = copy[locale];
+  const items = apps.map((app) => { const item = contentFor(app, locale); const href = app.support || `mailto:${contactEmail}?subject=${encodeURIComponent(`${locale === "pt" ? "Suporte" : "Support"} — ${item.name}`)}`; return `<li><img src="${app.icon}" width="62" height="62" alt=""><div><strong>${escapeHtml(item.name)}</strong><span>${escapeHtml(item.category)}</span></div><a href="${href}">${app.support ? t.pages.appSupport : t.pages.contact}<span aria-hidden="true">↗</span></a></li>`; }).join("");
+  const content = `${pageHero(t.pages.supportHero, t.pages.supportText, locale)}<section class="support-section"><div class="shell"><ul class="support-list">${items}</ul><div class="support-contact"><h2>${locale === "pt" ? "Ainda precisa de ajuda?" : "Still need help?"}</h2><p>${locale === "pt" ? "Inclua o aparelho, a versão do sistema, a versão do aplicativo e uma descrição do que aconteceu." : "Include your device, operating system version, app version and a description of what happened."}</p><a class="button button-primary" href="mailto:${contactEmail}">${t.pages.contact}</a></div></div></section>`;
+  return page({ locale, title: t.pages.supportTitle, description: t.pages.supportText, pathname: "/support/", alternatePath: route(locales[locale].other, "/support/"), content, bodyClass: "support-page" });
+}
+
+function storeButtons(app, locale) {
+  const t = copy[locale].pages;
   const buttons = [];
-  if (app.stores.google) buttons.push(`<a class="store-button" href="${app.stores.google}"><span>Disponível no</span><strong>Google Play</strong></a>`);
-  if (app.stores.apple) buttons.push(`<a class="store-button" href="${app.stores.apple}"><span>Disponível na</span><strong>App Store</strong></a>`);
-  if (app.website) buttons.push(`<a class="store-button" href="${app.website}"><span>Visitar o site</span><strong>${new URL(app.website).hostname}</strong></a>`);
-  if (!buttons.length) buttons.push(`<span class="status-button"><span>Status</span><strong>${escapeHtml(app.status)}</strong></span>`);
+  if (app.stores.google) buttons.push(`<a class="store-button" href="${app.stores.google}"><span>Google Play</span><strong>${t.appStoreGoogle}</strong></a>`);
+  if (app.stores.apple) buttons.push(`<a class="store-button" href="${app.stores.apple}"><span>App Store</span><strong>${t.appStoreApple}</strong></a>`);
+  if (app.website) buttons.push(`<a class="store-button" href="${app.website}"><span>Web</span><strong>${new URL(app.website).hostname}</strong></a>`);
+  if (!buttons.length) buttons.push(`<span class="store-button store-status"><span>Status</span><strong>${t.appStatus}</strong></span>`);
   return buttons.join("");
 }
 
-function appPage(app) {
-  const description = `${app.lead} Conheça recursos, plataformas, suporte e links oficiais.`;
-  const content = `
-    <article class="product-page" style="--app-accent:${app.accent}">
-      <section class="product-hero">
-        <div class="shell">
-          <nav class="breadcrumb" aria-label="Navegação estrutural"><a href="/apps/">Aplicativos</a><span aria-hidden="true">/</span><span aria-current="page">${escapeHtml(app.name)}</span></nav>
-          <div class="product-hero-grid">
-            <div class="product-icon-stage"><span class="product-index">${app.order}</span><img src="${app.icon}" width="360" height="360" alt="Ícone do ${escapeHtml(app.name)}" fetchpriority="high"></div>
-            <div class="product-intro"><p class="context-line"><span></span>${escapeHtml(app.category)}</p><h1>${escapeHtml(app.name)}</h1><p class="product-lead">${escapeHtml(app.lead)}</p><div class="platform-list" aria-label="Plataformas">${platformList(app)}</div><div class="store-buttons">${storeButtons(app)}</div></div>
-          </div>
-        </div>
-      </section>
-      <section class="product-story"><div class="shell product-story-grid"><p class="section-index">Sobre o app</p><div><h2>${escapeHtml(app.description)}</h2></div></div></section>
-      <section class="features-section"><div class="shell"><div class="features-heading"><p class="section-index">Recursos</p><h2>Feito para entrar no fluxo.</h2></div><ol class="feature-list">${app.features.map(([title, text], index) => `<li><span>${String(index + 1).padStart(2, "0")}</span><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></li>`).join("")}</ol></div></section>
-      <section class="product-links"><div class="shell"><div><p class="section-index">Informações</p><h2>Suporte e documentos</h2></div><div class="resource-links">${app.support ? `<a href="${app.support}"><span>Suporte do ${escapeHtml(app.name)}</span><span aria-hidden="true">↗</span></a>` : `<a href="/suporte/"><span>Falar com o suporte</span><span aria-hidden="true">↗</span></a>`}<a href="${app.privacy}"><span>Política de privacidade</span><span aria-hidden="true">↗</span></a>${app.website ? `<a href="${app.website}"><span>Site oficial</span><span aria-hidden="true">↗</span></a>` : ""}</div></div></section>
-      <nav class="next-product" aria-label="Próximo aplicativo">${(() => { const next = apps[(apps.indexOf(app) + 1) % apps.length]; return `<a href="/apps/${next.slug}/"><span>Próximo aplicativo</span><strong>${escapeHtml(next.name)}</strong><span aria-hidden="true">↗</span></a>`; })()}</nav>
-    </article>`;
-  return page({
-    title: `${app.name} — Oliveira Labs`,
-    description,
-    pathname: `/apps/${app.slug}/`,
-    content,
-    bodyClass: "app-page",
-    structuredData: jsonLd({
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      name: app.name,
-      applicationCategory: "MusicApplication",
-      operatingSystem: app.platforms.filter((platform) => !platform.startsWith("Em ")).join(", "),
-      description: app.lead,
-      url: `${siteUrl}/apps/${app.slug}/`,
-      image: `${siteUrl}${app.icon}`,
-      author: { "@type": "Organization", name: "Oliveira Labs", url: siteUrl },
-    }),
-  });
+function appPage(app, locale) {
+  const t = copy[locale];
+  const item = contentFor(app, locale);
+  const next = apps[(apps.indexOf(app) + 1) % apps.length];
+  const nextItem = contentFor(next, locale);
+  const content = `<article class="app-page-content" style="--app-color:${app.accent}">
+    <section class="app-hero"><div class="shell"><nav class="breadcrumb" aria-label="${locale === "pt" ? "Navegação estrutural" : "Breadcrumb"}"><a href="${route(locale, "/apps/")}">${t.nav.products}</a><span>/</span><span aria-current="page">${escapeHtml(item.name)}</span></nav><div class="app-hero-grid"><div class="app-icon-stage"><span class="app-stage-bubble one" aria-hidden="true"></span><span class="app-stage-bubble two" aria-hidden="true"></span><img src="${app.icon}" width="330" height="330" alt="${escapeHtml(item.name)} icon" fetchpriority="high"></div><div class="app-intro"><p class="kicker"><span aria-hidden="true"></span>${escapeHtml(item.category)}</p><h1>${escapeHtml(item.name)}</h1><p>${escapeHtml(item.lead)}</p>${platformList(app, locale)}<div class="store-buttons">${storeButtons(app, locale)}</div></div></div></div></section>
+    <section class="app-description"><div class="shell"><p>${escapeHtml(item.description)}</p></div></section>
+    <section class="app-features"><div class="shell">${sectionHeading(t.pages.appFeatures, item.name)}<div class="feature-grid">${item.features.map(([title, text]) => `<article><span aria-hidden="true">⌁</span><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></article>`).join("")}</div></div></section>
+    <section class="app-resources"><div class="shell"><h2>${t.pages.appResources}</h2><div>${app.support ? `<a href="${app.support}">${t.pages.appSupport}<span aria-hidden="true">↗</span></a>` : `<a href="mailto:${contactEmail}">${t.pages.contact}<span aria-hidden="true">↗</span></a>`}<a href="${app.privacy}">${t.pages.appPrivacy}<span aria-hidden="true">↗</span></a>${app.website ? `<a href="${app.website}">${t.pages.appWebsite}<span aria-hidden="true">↗</span></a>` : ""}</div></div></section>
+    <nav class="next-app" aria-label="${t.pages.next}"><a href="${route(locale, `/apps/${next.slug}/`)}"><span>${t.pages.next}</span><strong>${escapeHtml(nextItem.name)}</strong><span class="link-disc" aria-hidden="true">↗</span></a></nav>
+  </article>`;
+  const description = `${item.lead} ${item.description}`;
+  return page({ locale, title: `${item.name} — Oliveira Labs`, description, pathname: `/apps/${app.slug}/`, alternatePath: route(locales[locale].other, `/apps/${app.slug}/`), content, bodyClass: "app-page", structuredData: jsonLd({ "@context": "https://schema.org", "@type": "SoftwareApplication", name: item.name, applicationCategory: "SoftwareApplication", operatingSystem: app.platforms.join(", "), description: item.lead, url: absolute(route(locale, `/apps/${app.slug}/`)), image: absolute(app.icon), author: { "@type": "Organization", name: "Oliveira Labs", url: siteUrl } }) });
 }
 
-function aboutPage() {
-  const content = `
-    <section class="page-hero about-hero"><div class="shell"><p class="context-line"><span></span>Sobre o estúdio</p><h1>Tecnologia a serviço do gesto musical.</h1><p>A Oliveira Labs é a identidade de desenvolvimento de Antônio Oliveira e reúne um portfólio independente de aplicativos musicais.</p></div></section>
-    <section class="about-body"><div class="shell about-grid"><p class="section-index">Nossa prática</p><div class="about-copy"><h2>Aplicativos que começam no instrumento, não na tendência.</h2><p>O trabalho combina desenvolvimento de software e interesse por música para transformar telas em superfícies úteis de toque, prática e criação.</p><p>Cada produto parte de uma necessidade concreta: experimentar um instrumento sem equipamento, manter a prática por perto, criar uma atmosfera ao vivo ou registrar uma ideia antes que ela desapareça.</p></div><aside><strong>Oliveira Labs</strong><span>Montes Claros — MG</span><span>Brasil</span><a href="mailto:${contactEmail}">${contactEmail}</a></aside></div></section>
-    <section class="values-section"><div class="shell"><p class="section-index">O que orienta o trabalho</p><div class="values-grid"><div><span>01</span><h2>Resposta</h2><p>O som precisa acompanhar o toque e deixar a interação desaparecer.</p></div><div><span>02</span><h2>Clareza</h2><p>Recursos musicais complexos devem continuar compreensíveis na tela pequena.</p></div><div><span>03</span><h2>Continuidade</h2><p>Aplicativos são mantidos, refinados e ampliados depois do lançamento.</p></div></div></div></section>`;
-  return page({
-    title: "Sobre — Oliveira Labs",
-    description: "Conheça a Oliveira Labs, estúdio independente de aplicativos musicais criado por Antônio Oliveira.",
-    pathname: "/sobre/",
-    content,
-    bodyClass: "about-page",
-  });
+function notFoundPage(locale) {
+  const content = `<section class="not-found"><div class="shell"><img src="/site-assets/brand/oliveira-labs.png" width="150" height="150" alt=""><strong>404</strong><h1>${locale === "pt" ? "Este experimento não foi encontrado." : "This experiment could not be found."}</h1><p>${locale === "pt" ? "O endereço pode ter mudado ou não existir." : "The address may have changed or may not exist."}</p><a class="button button-primary" href="${route(locale, "/")}">${locale === "pt" ? "Voltar ao início" : "Back to home"}</a></div></section>`;
+  return page({ locale, title: locale === "pt" ? "Página não encontrada — Oliveira Labs" : "Page not found — Oliveira Labs", description: "404", pathname: locale === "pt" ? "/404/" : "/404.html", alternatePath: route(locales[locale].other, locale === "pt" ? "/404.html" : "/404/"), content, bodyClass: "not-found-page" });
 }
 
-function supportPage() {
-  const links = apps.map((app) => `<li><img src="${app.icon}" width="54" height="54" alt=""><div><strong>${escapeHtml(app.name)}</strong><span>${escapeHtml(app.category)}</span></div>${app.support ? `<a href="${app.support}">Abrir suporte<span class="sr-only"> do ${escapeHtml(app.name)}</span></a>` : `<a href="mailto:${contactEmail}?subject=Suporte%20${encodeURIComponent(app.name)}">Enviar e-mail<span class="sr-only"> sobre ${escapeHtml(app.name)}</span></a>`}</li>`).join("");
-  const content = `
-    <section class="page-hero support-hero"><div class="shell"><p class="context-line"><span></span>Central de suporte</p><h1>Vamos resolver isso.</h1><p>Escolha um aplicativo para consultar sua página específica ou envie uma mensagem com os detalhes do problema.</p><a class="button button-dark" href="mailto:${contactEmail}">Enviar e-mail</a></div></section>
-    <section class="support-list-section"><div class="shell"><div class="support-list-heading"><p class="section-index">Por aplicativo</p><p>Ao entrar em contato, inclua o modelo do aparelho, a versão do sistema e a versão do aplicativo.</p></div><ul class="support-list">${links}</ul></div></section>
-    <section class="contact-strip"><div class="shell"><span>E-mail de suporte</span><a href="mailto:${contactEmail}">${contactEmail}</a></div></section>`;
-  return page({
-    title: "Suporte — Oliveira Labs",
-    description: "Encontre suporte para os aplicativos da Oliveira Labs ou entre em contato diretamente.",
-    pathname: "/suporte/",
-    content,
-    bodyClass: "support-page",
-  });
-}
-
-function notFoundPage() {
-  const content = `<section class="not-found"><div class="shell"><span>404</span><p class="context-line"><span></span>Página não encontrada</p><h1>Essa faixa saiu da sequência.</h1><p>O endereço pode ter mudado ou não existir.</p><a class="button button-dark" href="/">Voltar ao início</a></div></section>`;
-  return page({
-    title: "Página não encontrada — Oliveira Labs",
-    description: "A página solicitada não foi encontrada.",
-    pathname: "/404.html",
-    content,
-    bodyClass: "not-found-page",
-  });
-}
-
-async function writeRoute(route, html) {
-  const directory = route === "/" ? output : path.join(output, route.replace(/^\//, ""));
+async function writeRoute(pathname, html) {
+  if (pathname.endsWith(".html")) { await writeFile(path.join(output, pathname.replace(/^\//, "")), html); return; }
+  const directory = pathname === "/" ? output : path.join(output, pathname.replace(/^\//, ""));
   await mkdir(directory, { recursive: true });
   await writeFile(path.join(directory, "index.html"), html);
 }
@@ -301,21 +258,27 @@ async function build() {
   await copyProtectedFiles();
   await cp(path.join(root, "site", "assets"), path.join(output, "site-assets"), { recursive: true });
 
-  await writeRoute("/", homePage());
-  await writeRoute("/apps/", appsPage());
-  await writeRoute("/sobre/", aboutPage());
-  await writeRoute("/suporte/", supportPage());
-  // Compatibility route referenced by the byte-protected Mega Drum privacy page.
-  await writeRoute("/help/", supportPage());
-  for (const app of apps) await writeRoute(`/apps/${app.slug}/`, appPage(app));
-  await writeFile(path.join(output, "404.html"), notFoundPage());
+  const indexed = [];
+  for (const locale of Object.keys(locales)) {
+    const pages = [
+      [route(locale, "/"), homePage(locale)],
+      [route(locale, "/apps/"), portfolioPage(locale)],
+      [route(locale, "/services/"), servicesPage(locale)],
+      [route(locale, "/about/"), aboutPage(locale)],
+      [route(locale, "/support/"), supportPage(locale)],
+    ];
+    for (const app of apps) pages.push([route(locale, `/apps/${app.slug}/`), appPage(app, locale)]);
+    for (const [pathname, html] of pages) { await writeRoute(pathname, html); indexed.push(pathname); }
+  }
+  await writeRoute("/404.html", notFoundPage("en"));
+  await writeRoute("/pt/404/", notFoundPage("pt"));
+  await writeRoute("/help/", supportPage("en"));
 
-  const routes = ["/", "/apps/", "/sobre/", "/suporte/", ...apps.map((app) => `/apps/${app.slug}/`)];
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map((route) => `  <url><loc>${siteUrl}${route}</loc></url>`).join("\n")}\n</urlset>\n`;
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${indexed.map((pathname) => `  <url><loc>${absolute(pathname)}</loc></url>`).join("\n")}\n</urlset>\n`;
   await writeFile(path.join(output, "sitemap.xml"), sitemap);
   await writeFile(path.join(output, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml\n`);
-  await writeFile(path.join(output, "manifest.webmanifest"), JSON.stringify({ name: "Oliveira Labs", short_name: "Oliveira Labs", start_url: "/", display: "standalone", background_color: "#F4F7F8", theme_color: "#17213A", icons: [{ src: "/site-assets/favicon.svg", sizes: "any", type: "image/svg+xml" }] }, null, 2));
-  console.log(`Oliveira Labs built: ${routes.length} indexed pages, one compatibility route and ${apps.length} app profiles.`);
+  await writeFile(path.join(output, "manifest.webmanifest"), JSON.stringify({ name: "Oliveira Labs", short_name: "Oliveira Labs", start_url: "/", display: "standalone", background_color: "#FFFFFF", theme_color: "#5FADE8", icons: [{ src: "/site-assets/brand/oliveira-labs.png", sizes: "512x512", type: "image/png" }] }, null, 2));
+  console.log(`Oliveira Labs built: ${indexed.length} localized pages, 2 not-found pages and one compatibility route.`);
 }
 
 await build();

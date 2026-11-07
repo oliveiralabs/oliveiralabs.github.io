@@ -33,9 +33,11 @@ for (const file of htmlFiles) {
   const html = await readFile(file, "utf8");
   const relative = path.relative(output, file);
   if (!protectedPaths.has(relative)) {
-    if (!html.includes('lang="pt-BR"')) errors.push(`${relative}: idioma ausente`);
+    if (!/lang="(?:en|pt-BR)"/.test(html)) errors.push(`${relative}: idioma ausente`);
     if (!html.includes("<main")) errors.push(`${relative}: main ausente`);
     if (!html.includes("<title>")) errors.push(`${relative}: title ausente`);
+    if (!html.includes('rel="canonical"')) errors.push(`${relative}: canonical ausente`);
+    if (!html.includes('hreflang="en"') || !html.includes('hreflang="pt-BR"')) errors.push(`${relative}: alternates de idioma ausentes`);
   }
   for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const target = localTarget(match[1]);
@@ -48,7 +50,7 @@ for (const file of htmlFiles) {
   }
 }
 
-for (const required of ["index.html", "apps/index.html", "sobre/index.html", "suporte/index.html", "404.html", "sitemap.xml", "robots.txt", ".nojekyll"]) {
+for (const required of ["index.html", "apps/index.html", "services/index.html", "about/index.html", "support/index.html", "pt/index.html", "pt/apps/index.html", "pt/services/index.html", "pt/about/index.html", "pt/support/index.html", "404.html", "sitemap.xml", "robots.txt", ".nojekyll"]) {
   try {
     await access(path.join(output, required));
   } catch {
